@@ -1,0 +1,657 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A593F095B0DEBF9F9C1269E /* Pods_Dombra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D7280D5E9C9ED953CC562A /* Pods_Dombra.framework */; };
+		D1175F9C246876150082EB29 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1175F9B246876150082EB29 /* CollectionViewCells.swift */; };
+		D1490C8B246AB45200DB0DE0 /* beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1490C8A246AB45200DB0DE0 /* beat.mp3 */; };
+		D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765D240BB96B007A4018 /* AppDelegate.swift */; };
+		D17A7660240BB96B007A4018 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765F240BB96B007A4018 /* SceneDelegate.swift */; };
+		D17A7662240BB96B007A4018 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A7661240BB96B007A4018 /* MainViewController.swift */; };
+		D17A7667240BB96D007A4018 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17A7666240BB96D007A4018 /* Assets.xcassets */; };
+		D17A766A240BB96D007A4018 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17A7668240BB96D007A4018 /* LaunchScreen.storyboard */; };
+		D17A7675240BE9AC007A4018 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A7674240BE9AC007A4018 /* LoadingViewController.swift */; };
+		D17A7679240C1D70007A4018 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A7678240C1D70007A4018 /* AudioPlayer.swift */; };
+		D17A767B240C2164007A4018 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A767A240C2164007A4018 /* Extensions.swift */; };
+		D17A767F240C24EF007A4018 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A767E240C24EF007A4018 /* Animator.swift */; };
+		D17BBBF524645FBB00CFC053 /* Qosalqa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBCB24645FBB00CFC053 /* Qosalqa.mp3 */; };
+		D17BBBF624645FBB00CFC053 /* u1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBCD24645FBB00CFC053 /* u1.m4a */; };
+		D17BBBF724645FBB00CFC053 /* u0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBCE24645FBB00CFC053 /* u0.m4a */; };
+		D17BBBF824645FBB00CFC053 /* u3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBCF24645FBB00CFC053 /* u3.m4a */; };
+		D17BBBF924645FBB00CFC053 /* u2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD024645FBB00CFC053 /* u2.m4a */; };
+		D17BBBFA24645FBB00CFC053 /* u6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD124645FBB00CFC053 /* u6.m4a */; };
+		D17BBBFB24645FBB00CFC053 /* u7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD224645FBB00CFC053 /* u7.m4a */; };
+		D17BBBFC24645FBB00CFC053 /* u5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD324645FBB00CFC053 /* u5.m4a */; };
+		D17BBBFD24645FBB00CFC053 /* u4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD424645FBB00CFC053 /* u4.m4a */; };
+		D17BBBFE24645FBB00CFC053 /* u10.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD524645FBB00CFC053 /* u10.m4a */; };
+		D17BBBFF24645FBB00CFC053 /* u11.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD624645FBB00CFC053 /* u11.m4a */; };
+		D17BBC0024645FBB00CFC053 /* u13.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD724645FBB00CFC053 /* u13.m4a */; };
+		D17BBC0124645FBB00CFC053 /* d9.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD824645FBB00CFC053 /* d9.m4a */; };
+		D17BBC0224645FBB00CFC053 /* d18.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBD924645FBB00CFC053 /* d18.m4a */; };
+		D17BBC0324645FBB00CFC053 /* d19.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBDA24645FBB00CFC053 /* d19.m4a */; };
+		D17BBC0424645FBB00CFC053 /* d8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBDB24645FBB00CFC053 /* d8.m4a */; };
+		D17BBC0524645FBB00CFC053 /* u12.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBDC24645FBB00CFC053 /* u12.m4a */; };
+		D17BBC0624645FBB00CFC053 /* d0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBDD24645FBB00CFC053 /* d0.m4a */; };
+		D17BBC0724645FBB00CFC053 /* u16.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBDE24645FBB00CFC053 /* u16.m4a */; };
+		D17BBC0824645FBB00CFC053 /* u17.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBDF24645FBB00CFC053 /* u17.m4a */; };
+		D17BBC0924645FBB00CFC053 /* u15.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE024645FBB00CFC053 /* u15.m4a */; };
+		D17BBC0A24645FBB00CFC053 /* u14.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE124645FBB00CFC053 /* u14.m4a */; };
+		D17BBC0B24645FBB00CFC053 /* u19.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE224645FBB00CFC053 /* u19.m4a */; };
+		D17BBC0C24645FBB00CFC053 /* d3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE324645FBB00CFC053 /* d3.m4a */; };
+		D17BBC0D24645FBB00CFC053 /* d12.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE424645FBB00CFC053 /* d12.m4a */; };
+		D17BBC0E24645FBB00CFC053 /* d2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE524645FBB00CFC053 /* d2.m4a */; };
+		D17BBC0F24645FBB00CFC053 /* u18.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE624645FBB00CFC053 /* u18.m4a */; };
+		D17BBC1024645FBB00CFC053 /* d11.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE724645FBB00CFC053 /* d11.m4a */; };
+		D17BBC1124645FBB00CFC053 /* d10.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE824645FBB00CFC053 /* d10.m4a */; };
+		D17BBC1224645FBB00CFC053 /* d1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBE924645FBB00CFC053 /* d1.m4a */; };
+		D17BBC1324645FBB00CFC053 /* d13.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBEA24645FBB00CFC053 /* d13.m4a */; };
+		D17BBC1424645FBB00CFC053 /* d5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBEB24645FBB00CFC053 /* d5.m4a */; };
+		D17BBC1524645FBB00CFC053 /* d14.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBEC24645FBB00CFC053 /* d14.m4a */; };
+		D17BBC1624645FBB00CFC053 /* d15.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBED24645FBB00CFC053 /* d15.m4a */; };
+		D17BBC1724645FBB00CFC053 /* d4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBEE24645FBB00CFC053 /* d4.m4a */; };
+		D17BBC1824645FBB00CFC053 /* d6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBEF24645FBB00CFC053 /* d6.m4a */; };
+		D17BBC1924645FBB00CFC053 /* d17.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF024645FBB00CFC053 /* d17.m4a */; };
+		D17BBC1A24645FBB00CFC053 /* d16.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF124645FBB00CFC053 /* d16.m4a */; };
+		D17BBC1B24645FBB00CFC053 /* d7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF224645FBB00CFC053 /* d7.m4a */; };
+		D17BBC1C24645FBB00CFC053 /* u9.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF324645FBB00CFC053 /* u9.m4a */; };
+		D17BBC1D24645FBB00CFC053 /* u8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF424645FBB00CFC053 /* u8.m4a */; };
+		D192FCF224B3108300C5660E /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF124B3108300C5660E /* ContainerView.swift */; };
+		D192FCF424B316F400C5660E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF324B316F400C5660E /* VideoViewController.swift */; };
+		D192FCF624B380E100C5660E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF524B380E100C5660E /* SettingsViewController.swift */; };
+		D1AEC72C240F875A00FA27D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEC72B240F875A00FA27D6 /* Content.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		54D7280D5E9C9ED953CC562A /* Pods_Dombra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dombra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		741155C93BC4D560EE66B076 /* Pods-Dombra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.debug.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.debug.xcconfig"; sourceTree = "<group>"; };
+		B001922C15751A191D909257 /* Pods-Dombra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.release.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.release.xcconfig"; sourceTree = "<group>"; };
+		D1175F9B246876150082EB29 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
+		D1490C8A246AB45200DB0DE0 /* beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beat.mp3; sourceTree = "<group>"; };
+		D15C9BE02415929D00C4E99F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		D15C9BE52415939F00C4E99F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D17A765A240BB96B007A4018 /* Dombra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dombra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D17A765D240BB96B007A4018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D17A765F240BB96B007A4018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D17A7661240BB96B007A4018 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D17A7666240BB96D007A4018 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D17A7669240BB96D007A4018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D17A766B240BB96D007A4018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D17A7674240BE9AC007A4018 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		D17A7678240C1D70007A4018 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		D17A767A240C2164007A4018 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D17A767E240C24EF007A4018 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		D17BBBCB24645FBB00CFC053 /* Qosalqa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Qosalqa.mp3; sourceTree = "<group>"; };
+		D17BBBCD24645FBB00CFC053 /* u1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u1.m4a; sourceTree = "<group>"; };
+		D17BBBCE24645FBB00CFC053 /* u0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u0.m4a; sourceTree = "<group>"; };
+		D17BBBCF24645FBB00CFC053 /* u3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u3.m4a; sourceTree = "<group>"; };
+		D17BBBD024645FBB00CFC053 /* u2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u2.m4a; sourceTree = "<group>"; };
+		D17BBBD124645FBB00CFC053 /* u6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u6.m4a; sourceTree = "<group>"; };
+		D17BBBD224645FBB00CFC053 /* u7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u7.m4a; sourceTree = "<group>"; };
+		D17BBBD324645FBB00CFC053 /* u5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u5.m4a; sourceTree = "<group>"; };
+		D17BBBD424645FBB00CFC053 /* u4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u4.m4a; sourceTree = "<group>"; };
+		D17BBBD524645FBB00CFC053 /* u10.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u10.m4a; sourceTree = "<group>"; };
+		D17BBBD624645FBB00CFC053 /* u11.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u11.m4a; sourceTree = "<group>"; };
+		D17BBBD724645FBB00CFC053 /* u13.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u13.m4a; sourceTree = "<group>"; };
+		D17BBBD824645FBB00CFC053 /* d9.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d9.m4a; sourceTree = "<group>"; };
+		D17BBBD924645FBB00CFC053 /* d18.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d18.m4a; sourceTree = "<group>"; };
+		D17BBBDA24645FBB00CFC053 /* d19.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d19.m4a; sourceTree = "<group>"; };
+		D17BBBDB24645FBB00CFC053 /* d8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d8.m4a; sourceTree = "<group>"; };
+		D17BBBDC24645FBB00CFC053 /* u12.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u12.m4a; sourceTree = "<group>"; };
+		D17BBBDD24645FBB00CFC053 /* d0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d0.m4a; sourceTree = "<group>"; };
+		D17BBBDE24645FBB00CFC053 /* u16.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u16.m4a; sourceTree = "<group>"; };
+		D17BBBDF24645FBB00CFC053 /* u17.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u17.m4a; sourceTree = "<group>"; };
+		D17BBBE024645FBB00CFC053 /* u15.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u15.m4a; sourceTree = "<group>"; };
+		D17BBBE124645FBB00CFC053 /* u14.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u14.m4a; sourceTree = "<group>"; };
+		D17BBBE224645FBB00CFC053 /* u19.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u19.m4a; sourceTree = "<group>"; };
+		D17BBBE324645FBB00CFC053 /* d3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d3.m4a; sourceTree = "<group>"; };
+		D17BBBE424645FBB00CFC053 /* d12.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d12.m4a; sourceTree = "<group>"; };
+		D17BBBE524645FBB00CFC053 /* d2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d2.m4a; sourceTree = "<group>"; };
+		D17BBBE624645FBB00CFC053 /* u18.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u18.m4a; sourceTree = "<group>"; };
+		D17BBBE724645FBB00CFC053 /* d11.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d11.m4a; sourceTree = "<group>"; };
+		D17BBBE824645FBB00CFC053 /* d10.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d10.m4a; sourceTree = "<group>"; };
+		D17BBBE924645FBB00CFC053 /* d1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d1.m4a; sourceTree = "<group>"; };
+		D17BBBEA24645FBB00CFC053 /* d13.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d13.m4a; sourceTree = "<group>"; };
+		D17BBBEB24645FBB00CFC053 /* d5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d5.m4a; sourceTree = "<group>"; };
+		D17BBBEC24645FBB00CFC053 /* d14.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d14.m4a; sourceTree = "<group>"; };
+		D17BBBED24645FBB00CFC053 /* d15.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d15.m4a; sourceTree = "<group>"; };
+		D17BBBEE24645FBB00CFC053 /* d4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d4.m4a; sourceTree = "<group>"; };
+		D17BBBEF24645FBB00CFC053 /* d6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d6.m4a; sourceTree = "<group>"; };
+		D17BBBF024645FBB00CFC053 /* d17.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d17.m4a; sourceTree = "<group>"; };
+		D17BBBF124645FBB00CFC053 /* d16.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d16.m4a; sourceTree = "<group>"; };
+		D17BBBF224645FBB00CFC053 /* d7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d7.m4a; sourceTree = "<group>"; };
+		D17BBBF324645FBB00CFC053 /* u9.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u9.m4a; sourceTree = "<group>"; };
+		D17BBBF424645FBB00CFC053 /* u8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u8.m4a; sourceTree = "<group>"; };
+		D192FCF124B3108300C5660E /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		D192FCF324B316F400C5660E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		D192FCF524B380E100C5660E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D1AEC72B240F875A00FA27D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D17A7657240BB96B007A4018 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A593F095B0DEBF9F9C1269E /* Pods_Dombra.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D15C9BDF2415929D00C4E99F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D15C9BE52415939F00C4E99F /* AVFoundation.framework */,
+				D15C9BE02415929D00C4E99F /* AVKit.framework */,
+				54D7280D5E9C9ED953CC562A /* Pods_Dombra.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D17A7651240BB96B007A4018 = {
+			isa = PBXGroup;
+			children = (
+				D17A765C240BB96B007A4018 /* Dombra */,
+				D17A765B240BB96B007A4018 /* Products */,
+				D15C9BDF2415929D00C4E99F /* Frameworks */,
+				E7ABB8A528BCE6667893326C /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		D17A765B240BB96B007A4018 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D17A765A240BB96B007A4018 /* Dombra.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D17A765C240BB96B007A4018 /* Dombra */ = {
+			isa = PBXGroup;
+			children = (
+				D17A766B240BB96D007A4018 /* Info.plist */,
+				D17A767C240C24C1007A4018 /* ViewControllers */,
+				D1A9EBCC24658FC20004BB8C /* Managers */,
+				D17A767D240C24D0007A4018 /* Supporting Files */,
+				D17BBBCA24645FBB00CFC053 /* Resources */,
+			);
+			path = Dombra;
+			sourceTree = "<group>";
+		};
+		D17A767C240C24C1007A4018 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D17A7674240BE9AC007A4018 /* LoadingViewController.swift */,
+				D17A7661240BB96B007A4018 /* MainViewController.swift */,
+				D192FCF324B316F400C5660E /* VideoViewController.swift */,
+				D192FCF524B380E100C5660E /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D17A767D240C24D0007A4018 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D17A765D240BB96B007A4018 /* AppDelegate.swift */,
+				D17A765F240BB96B007A4018 /* SceneDelegate.swift */,
+				D17A767A240C2164007A4018 /* Extensions.swift */,
+				D1175F9B246876150082EB29 /* CollectionViewCells.swift */,
+				D192FCF124B3108300C5660E /* ContainerView.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D17BBBCA24645FBB00CFC053 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1AEC72B240F875A00FA27D6 /* Content.swift */,
+				D17A7668240BB96D007A4018 /* LaunchScreen.storyboard */,
+				D17A7666240BB96D007A4018 /* Assets.xcassets */,
+				D17BBBCC24645FBB00CFC053 /* Audio */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D17BBBCC24645FBB00CFC053 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D1490C8A246AB45200DB0DE0 /* beat.mp3 */,
+				D17BBC1E2464601000CFC053 /* Notes */,
+				D17BBBCB24645FBB00CFC053 /* Qosalqa.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		D17BBC1E2464601000CFC053 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				D17BBBCD24645FBB00CFC053 /* u1.m4a */,
+				D17BBBCE24645FBB00CFC053 /* u0.m4a */,
+				D17BBBCF24645FBB00CFC053 /* u3.m4a */,
+				D17BBBD024645FBB00CFC053 /* u2.m4a */,
+				D17BBBD124645FBB00CFC053 /* u6.m4a */,
+				D17BBBD224645FBB00CFC053 /* u7.m4a */,
+				D17BBBD324645FBB00CFC053 /* u5.m4a */,
+				D17BBBD424645FBB00CFC053 /* u4.m4a */,
+				D17BBBD524645FBB00CFC053 /* u10.m4a */,
+				D17BBBD624645FBB00CFC053 /* u11.m4a */,
+				D17BBBD724645FBB00CFC053 /* u13.m4a */,
+				D17BBBD824645FBB00CFC053 /* d9.m4a */,
+				D17BBBD924645FBB00CFC053 /* d18.m4a */,
+				D17BBBDA24645FBB00CFC053 /* d19.m4a */,
+				D17BBBDB24645FBB00CFC053 /* d8.m4a */,
+				D17BBBDC24645FBB00CFC053 /* u12.m4a */,
+				D17BBBDD24645FBB00CFC053 /* d0.m4a */,
+				D17BBBDE24645FBB00CFC053 /* u16.m4a */,
+				D17BBBDF24645FBB00CFC053 /* u17.m4a */,
+				D17BBBE024645FBB00CFC053 /* u15.m4a */,
+				D17BBBE124645FBB00CFC053 /* u14.m4a */,
+				D17BBBE224645FBB00CFC053 /* u19.m4a */,
+				D17BBBE324645FBB00CFC053 /* d3.m4a */,
+				D17BBBE424645FBB00CFC053 /* d12.m4a */,
+				D17BBBE524645FBB00CFC053 /* d2.m4a */,
+				D17BBBE624645FBB00CFC053 /* u18.m4a */,
+				D17BBBE724645FBB00CFC053 /* d11.m4a */,
+				D17BBBE824645FBB00CFC053 /* d10.m4a */,
+				D17BBBE924645FBB00CFC053 /* d1.m4a */,
+				D17BBBEA24645FBB00CFC053 /* d13.m4a */,
+				D17BBBEB24645FBB00CFC053 /* d5.m4a */,
+				D17BBBEC24645FBB00CFC053 /* d14.m4a */,
+				D17BBBED24645FBB00CFC053 /* d15.m4a */,
+				D17BBBEE24645FBB00CFC053 /* d4.m4a */,
+				D17BBBEF24645FBB00CFC053 /* d6.m4a */,
+				D17BBBF024645FBB00CFC053 /* d17.m4a */,
+				D17BBBF124645FBB00CFC053 /* d16.m4a */,
+				D17BBBF224645FBB00CFC053 /* d7.m4a */,
+				D17BBBF324645FBB00CFC053 /* u9.m4a */,
+				D17BBBF424645FBB00CFC053 /* u8.m4a */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		D1A9EBCC24658FC20004BB8C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D17A7678240C1D70007A4018 /* AudioPlayer.swift */,
+				D17A767E240C24EF007A4018 /* Animator.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E7ABB8A528BCE6667893326C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				741155C93BC4D560EE66B076 /* Pods-Dombra.debug.xcconfig */,
+				B001922C15751A191D909257 /* Pods-Dombra.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D17A7659240BB96B007A4018 /* Dombra */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D17A766E240BB96D007A4018 /* Build configuration list for PBXNativeTarget "Dombra" */;
+			buildPhases = (
+				D891A18EF1B12D478184993A /* [CP] Check Pods Manifest.lock */,
+				D17A7656240BB96B007A4018 /* Sources */,
+				D17A7657240BB96B007A4018 /* Frameworks */,
+				D17A7658240BB96B007A4018 /* Resources */,
+				F4C4F04BCEF944CBD6214E8F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dombra;
+			productName = Dombra;
+			productReference = D17A765A240BB96B007A4018 /* Dombra.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D17A7652240BB96B007A4018 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = devMetah;
+				TargetAttributes = {
+					D17A7659240BB96B007A4018 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+				};
+			};
+			buildConfigurationList = D17A7655240BB96B007A4018 /* Build configuration list for PBXProject "Dombra" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D17A7651240BB96B007A4018;
+			productRefGroup = D17A765B240BB96B007A4018 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D17A7659240BB96B007A4018 /* Dombra */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D17A7658240BB96B007A4018 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D17BBC1D24645FBB00CFC053 /* u8.m4a in Resources */,
+				D17BBC0E24645FBB00CFC053 /* d2.m4a in Resources */,
+				D17BBC0024645FBB00CFC053 /* u13.m4a in Resources */,
+				D17BBBFF24645FBB00CFC053 /* u11.m4a in Resources */,
+				D17BBC1024645FBB00CFC053 /* d11.m4a in Resources */,
+				D17BBC0924645FBB00CFC053 /* u15.m4a in Resources */,
+				D1490C8B246AB45200DB0DE0 /* beat.mp3 in Resources */,
+				D17BBC0524645FBB00CFC053 /* u12.m4a in Resources */,
+				D17BBBFD24645FBB00CFC053 /* u4.m4a in Resources */,
+				D17BBBFC24645FBB00CFC053 /* u5.m4a in Resources */,
+				D17BBC1824645FBB00CFC053 /* d6.m4a in Resources */,
+				D17BBC0224645FBB00CFC053 /* d18.m4a in Resources */,
+				D17BBBF824645FBB00CFC053 /* u3.m4a in Resources */,
+				D17BBBFA24645FBB00CFC053 /* u6.m4a in Resources */,
+				D17BBC1924645FBB00CFC053 /* d17.m4a in Resources */,
+				D17BBC1224645FBB00CFC053 /* d1.m4a in Resources */,
+				D17BBC1124645FBB00CFC053 /* d10.m4a in Resources */,
+				D17BBC1424645FBB00CFC053 /* d5.m4a in Resources */,
+				D17BBC0A24645FBB00CFC053 /* u14.m4a in Resources */,
+				D17BBC0624645FBB00CFC053 /* d0.m4a in Resources */,
+				D17BBC1C24645FBB00CFC053 /* u9.m4a in Resources */,
+				D17BBC1A24645FBB00CFC053 /* d16.m4a in Resources */,
+				D17BBBF724645FBB00CFC053 /* u0.m4a in Resources */,
+				D17BBC1324645FBB00CFC053 /* d13.m4a in Resources */,
+				D17BBC0424645FBB00CFC053 /* d8.m4a in Resources */,
+				D17BBC0C24645FBB00CFC053 /* d3.m4a in Resources */,
+				D17BBBF624645FBB00CFC053 /* u1.m4a in Resources */,
+				D17A766A240BB96D007A4018 /* LaunchScreen.storyboard in Resources */,
+				D17BBBFB24645FBB00CFC053 /* u7.m4a in Resources */,
+				D17BBC1724645FBB00CFC053 /* d4.m4a in Resources */,
+				D17BBC0F24645FBB00CFC053 /* u18.m4a in Resources */,
+				D17BBC0124645FBB00CFC053 /* d9.m4a in Resources */,
+				D17BBC1524645FBB00CFC053 /* d14.m4a in Resources */,
+				D17BBBF924645FBB00CFC053 /* u2.m4a in Resources */,
+				D17BBC0824645FBB00CFC053 /* u17.m4a in Resources */,
+				D17BBBFE24645FBB00CFC053 /* u10.m4a in Resources */,
+				D17BBC1B24645FBB00CFC053 /* d7.m4a in Resources */,
+				D17BBC0324645FBB00CFC053 /* d19.m4a in Resources */,
+				D17BBC0724645FBB00CFC053 /* u16.m4a in Resources */,
+				D17BBC0B24645FBB00CFC053 /* u19.m4a in Resources */,
+				D17BBC0D24645FBB00CFC053 /* d12.m4a in Resources */,
+				D17BBC1624645FBB00CFC053 /* d15.m4a in Resources */,
+				D17BBBF524645FBB00CFC053 /* Qosalqa.mp3 in Resources */,
+				D17A7667240BB96D007A4018 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D891A18EF1B12D478184993A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dombra-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4C4F04BCEF944CBD6214E8F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dombra/Pods-Dombra-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dombra/Pods-Dombra-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dombra/Pods-Dombra-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D17A7656240BB96B007A4018 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1175F9C246876150082EB29 /* CollectionViewCells.swift in Sources */,
+				D17A7679240C1D70007A4018 /* AudioPlayer.swift in Sources */,
+				D192FCF424B316F400C5660E /* VideoViewController.swift in Sources */,
+				D17A7662240BB96B007A4018 /* MainViewController.swift in Sources */,
+				D1AEC72C240F875A00FA27D6 /* Content.swift in Sources */,
+				D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */,
+				D17A7660240BB96B007A4018 /* SceneDelegate.swift in Sources */,
+				D17A767F240C24EF007A4018 /* Animator.swift in Sources */,
+				D17A7675240BE9AC007A4018 /* LoadingViewController.swift in Sources */,
+				D192FCF224B3108300C5660E /* ContainerView.swift in Sources */,
+				D17A767B240C2164007A4018 /* Extensions.swift in Sources */,
+				D192FCF624B380E100C5660E /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D17A7668240BB96D007A4018 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D17A7669240BB96D007A4018 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D17A766C240BB96D007A4018 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D17A766D240BB96D007A4018 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D17A766F240BB96D007A4018 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 741155C93BC4D560EE66B076 /* Pods-Dombra.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UCRS3R4AUU;
+				INFOPLIST_FILE = Dombra/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devMetah.Dombra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D17A7670240BB96D007A4018 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B001922C15751A191D909257 /* Pods-Dombra.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UCRS3R4AUU;
+				INFOPLIST_FILE = Dombra/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devMetah.Dombra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D17A7655240BB96B007A4018 /* Build configuration list for PBXProject "Dombra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D17A766C240BB96D007A4018 /* Debug */,
+				D17A766D240BB96D007A4018 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D17A766E240BB96D007A4018 /* Build configuration list for PBXNativeTarget "Dombra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D17A766F240BB96D007A4018 /* Debug */,
+				D17A7670240BB96D007A4018 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D17A7652240BB96B007A4018 /* Project object */;
+}
