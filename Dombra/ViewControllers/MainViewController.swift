@@ -389,6 +389,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if indexPath.row == 0 {
                 self.show(SettingsViewController(), sender: nil)
             } else {
+                stopMetronome()
                 setProperties()
                 
                 self.view.addSubview(videoVC.view)
