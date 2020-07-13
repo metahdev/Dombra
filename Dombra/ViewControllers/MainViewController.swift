@@ -83,7 +83,7 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
     }()
     private lazy var keysStateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel("Hide the dombra keys", font: self.view.frame.height * 0.05)
+        lbl.turnToStateLabel("Hide the dombra keys", font: self.view.frame.height * 0.045)
         return lbl
     }()
     
@@ -269,13 +269,6 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
         animationTimer?.invalidate()
         containerView.clearAllDots()
         AudioPlayer.metronomeAudioPlayer.stop()
-    }
-    
-
-    // MARK:- Guide
-    @objc
-    private func showGuide() {
-//        self.show(GuideViewController(), sender: nil)
     }
 
 
