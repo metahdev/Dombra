@@ -154,7 +154,7 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
     
     private var tempConstraints = [NSLayoutConstraint]()
     private var visualEffectView: UIVisualEffectView!
-    private var videoVC: VideoViewController!
+    private var currentVC: UIViewController!
     
 
     // MARK:- View Lifecycle
@@ -392,37 +392,35 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             secondStringDragged(index)
             animateHighlighting(viewToHighlight: cell?.greenBlurEffectView, keysCV: secondKeysCV)
         } else if collectionView.tag == 1005 {
+            stopMetronome()
+            addBlur()
             if indexPath.row == 0 {
-                self.show(SettingsViewController(), sender: nil)
+                currentVC = SettingsViewController()
             } else {
-                stopMetronome()
-                setProperties()
-                
-                self.view.addSubview(videoVC.view)
-                self.addChild(videoVC)
-                videoVC.didMove(toParent: parent)
-                
-                addBlur()
-                initVideoViewConstraints()
-                NSLayoutConstraint.activate(tempConstraints)
-                
-                setupAlphaValues(0)
-                animWithValue(1, completion: {})
+                currentVC = VideoViewController()
             }
+            setProperties()
+            initChildVC()
+            NSLayoutConstraint.activate(tempConstraints)
+            setupAlphaValues(0)
+            animWithValue(1, completion: {})
         }
     }
     
     private func setProperties() {
-        videoVC = VideoViewController()
-        videoVC.main = self
+        (currentVC as! ChildVC).main = self
+        currentVC.view.translatesAutoresizingMaskIntoConstraints = false
+        currentVC.view.layer.zPosition = 3
         
-        openKeyView.isUserInteractionEnabled = false 
-        videoVC.view.translatesAutoresizingMaskIntoConstraints = false
-        videoVC.view.layer.zPosition = 3
+        self.view.addSubview(currentVC.view)
+        self.addChild(currentVC)
+        currentVC.didMove(toParent: parent)
+        initChildVC()
+        setupAlphaValues(0)
     }
     
     private func setupAlphaValues(_ value: CGFloat) {
-        self.videoVC.view.alpha = value
+        self.currentVC.view.alpha = value
         self.visualEffectView.alpha = value
     }
     
@@ -611,6 +609,7 @@ extension MainViewController {
         visualEffectView.frame = view.frame
         visualEffectView.layer.zPosition = 2
         visualEffectView.isUserInteractionEnabled = false
+        openKeyView.isUserInteractionEnabled = false
 
         view.addSubview(visualEffectView)
     }
@@ -619,12 +618,12 @@ extension MainViewController {
         visualEffectView.removeFromSuperview()
     }
     
-    private func initVideoViewConstraints() {
+    private func initChildVC() {
         tempConstraints = [
-            videoVC.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            videoVC.view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            videoVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9),
-            videoVC.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
+            currentVC.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            currentVC.view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            currentVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9),
+            currentVC.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
         ]
     }
 }
@@ -635,7 +634,7 @@ extension MainViewController {
         animWithValue(0, completion: {
             NSLayoutConstraint.deactivate(self.tempConstraints)
             self.removeBlur()
-            self.videoVC.remove()
+            self.currentVC.remove()
             self.openKeyView.isUserInteractionEnabled = true
         })
     }

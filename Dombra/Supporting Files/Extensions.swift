@@ -58,6 +58,20 @@ extension UIButton {
         self.setBackgroundImage(UIImage(named: image), for: .normal)
         self.addTarget(target, action: action, for: .touchUpInside)
     }
+    
+    func turnToCloseBtn(target: UIViewController, action: Selector) {
+        self.setImage(UIImage(named: "close"), for: .normal)
+        self.addTarget(self, action: action, for: .touchUpInside)
+    }
+    
+    func activateCloseBtnConstraints(view: UIView) {
+        NSLayoutConstraint.activate([
+            self.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            self.widthAnchor.constraint(equalTo: self.heightAnchor),
+        ])
+    }
 }
 
 extension UIView {

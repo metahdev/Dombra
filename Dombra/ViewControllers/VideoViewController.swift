@@ -9,8 +9,11 @@
 import UIKit
 import youtube_ios_player_helper
 
+protocol ChildVC: class {
+    var main: MainViewControllerProtocol! { get set }
+}
 
-class VideoViewController: UIViewController {
+class VideoViewController: UIViewController, ChildVC {
     // MARK:- Properties
     weak var main: MainViewControllerProtocol!
     private lazy var titleLabel: UILabel = {
@@ -50,6 +53,7 @@ class VideoViewController: UIViewController {
         view.addSubview(videoView)
         
         setSubviewsAutoresizingFalse()
+        closeBtn.activateCloseBtnConstraints(view: self.view) 
         activateConstraints()
     }
     
@@ -71,13 +75,8 @@ class VideoViewController: UIViewController {
             videoView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
             
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: closeBtn.topAnchor, constant: 16),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            closeBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            closeBtn.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            closeBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
-            closeBtn.widthAnchor.constraint(equalTo: closeBtn.heightAnchor),
             
             descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)

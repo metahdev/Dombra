@@ -64,6 +64,7 @@
 		D192FCF424B316F400C5660E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF324B316F400C5660E /* VideoViewController.swift */; };
 		D192FCF624B380E100C5660E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF524B380E100C5660E /* SettingsViewController.swift */; };
 		D1AEC72C240F875A00FA27D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEC72B240F875A00FA27D6 /* Content.swift */; };
+		D1FB93C724BE606300110B12 /* DombraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB93C624BE606300110B12 /* DombraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		D192FCF324B316F400C5660E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D192FCF524B380E100C5660E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D1AEC72B240F875A00FA27D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		D1FB93C624BE606300110B12 /* DombraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DombraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			children = (
 				D17A7674240BE9AC007A4018 /* LoadingViewController.swift */,
 				D17A7661240BB96B007A4018 /* MainViewController.swift */,
+				D1FB93C624BE606300110B12 /* DombraViewController.swift */,
 				D192FCF324B316F400C5660E /* VideoViewController.swift */,
 				D192FCF524B380E100C5660E /* SettingsViewController.swift */,
 			);
@@ -453,6 +456,7 @@
 				D17A7679240C1D70007A4018 /* AudioPlayer.swift in Sources */,
 				D192FCF424B316F400C5660E /* VideoViewController.swift in Sources */,
 				D17A7662240BB96B007A4018 /* MainViewController.swift in Sources */,
+				D1FB93C724BE606300110B12 /* DombraViewController.swift in Sources */,
 				D1AEC72C240F875A00FA27D6 /* Content.swift in Sources */,
 				D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */,
 				D17A7660240BB96B007A4018 /* SceneDelegate.swift in Sources */,

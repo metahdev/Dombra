@@ -8,9 +8,48 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
-    // MARK:- View Lifecycle 
+class SettingsViewController: UIViewController, ChildVC {
+    // MARK:- Properties
+    weak var main: MainViewControllerProtocol!
+    private lazy var closeBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "close"), for: .normal)
+        btn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        return btn
+    }()
+    
+    // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.backgroundColor = .clear
+        view.addSubview(closeBtn)
+        
+        setSubviewsAutoresizingFalse()
+        closeBtn.activateCloseBtnConstraints(view: self.view)
+        activateConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
+    private func setSubviewsAutoresizingFalse() {
+        for subview in view.subviews {
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    private func activateConstraints() {
+        NSLayoutConstraint.activate([
+            
+        ])
+    }
+    
+    
+    // MARK:- Actions
+    @objc
+    private func closeView() {
+        main.closeChildView()
     }
 }
