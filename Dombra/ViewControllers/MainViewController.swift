@@ -14,11 +14,9 @@ import GoogleMobileAds
 
 #warning("TODO")
 /*
- 1. MenuView updated UI
- 2. GoogleAd integration
- 3. VideoVC
- 4. SettingVC
- 5. Refactoring(sound reusing, less CVs)
+ 1. Main Layout
+ 2. SettingVC
+ 3. Refactoring(sound reusing, less CVs)
  */
 
 protocol MainViewControllerProtocol: class {
