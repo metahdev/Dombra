@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A593F095B0DEBF9F9C1269E /* Pods_Dombra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D7280D5E9C9ED953CC562A /* Pods_Dombra.framework */; };
+		86C4B1780047FFD756B3B28E /* Pods_Dombra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B00F2299A4720033E0252D3 /* Pods_Dombra.framework */; };
 		D1175F9C246876150082EB29 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1175F9B246876150082EB29 /* CollectionViewCells.swift */; };
 		D1490C8B246AB45200DB0DE0 /* beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1490C8A246AB45200DB0DE0 /* beat.mp3 */; };
 		D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765D240BB96B007A4018 /* AppDelegate.swift */; };
@@ -67,9 +67,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		54D7280D5E9C9ED953CC562A /* Pods_Dombra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dombra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		741155C93BC4D560EE66B076 /* Pods-Dombra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.debug.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.debug.xcconfig"; sourceTree = "<group>"; };
-		B001922C15751A191D909257 /* Pods-Dombra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.release.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.release.xcconfig"; sourceTree = "<group>"; };
+		2B00F2299A4720033E0252D3 /* Pods_Dombra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dombra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6BAD17B170030EB9301F07 /* Pods-Dombra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.debug.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.debug.xcconfig"; sourceTree = "<group>"; };
+		4C36599C69B6E4573B7E53A2 /* Pods-Dombra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.release.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.release.xcconfig"; sourceTree = "<group>"; };
 		D1175F9B246876150082EB29 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
 		D1490C8A246AB45200DB0DE0 /* beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beat.mp3; sourceTree = "<group>"; };
 		D15C9BE02415929D00C4E99F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -137,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A593F095B0DEBF9F9C1269E /* Pods_Dombra.framework in Frameworks */,
+				86C4B1780047FFD756B3B28E /* Pods_Dombra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +149,7 @@
 			children = (
 				D15C9BE52415939F00C4E99F /* AVFoundation.framework */,
 				D15C9BE02415929D00C4E99F /* AVKit.framework */,
-				54D7280D5E9C9ED953CC562A /* Pods_Dombra.framework */,
+				2B00F2299A4720033E0252D3 /* Pods_Dombra.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -287,8 +287,8 @@
 		E7ABB8A528BCE6667893326C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				741155C93BC4D560EE66B076 /* Pods-Dombra.debug.xcconfig */,
-				B001922C15751A191D909257 /* Pods-Dombra.release.xcconfig */,
+				2C6BAD17B170030EB9301F07 /* Pods-Dombra.debug.xcconfig */,
+				4C36599C69B6E4573B7E53A2 /* Pods-Dombra.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -300,11 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D17A766E240BB96D007A4018 /* Build configuration list for PBXNativeTarget "Dombra" */;
 			buildPhases = (
-				D891A18EF1B12D478184993A /* [CP] Check Pods Manifest.lock */,
+				2A6A80F3A8B02A068E216AEF /* [CP] Check Pods Manifest.lock */,
 				D17A7656240BB96B007A4018 /* Sources */,
 				D17A7657240BB96B007A4018 /* Frameworks */,
 				D17A7658240BB96B007A4018 /* Resources */,
-				F4C4F04BCEF944CBD6214E8F /* [CP] Embed Pods Frameworks */,
+				9B6B86771025C2B5EC7A2A23 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,7 +403,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D891A18EF1B12D478184993A /* [CP] Check Pods Manifest.lock */ = {
+		2A6A80F3A8B02A068E216AEF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -425,7 +425,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4C4F04BCEF944CBD6214E8F /* [CP] Embed Pods Frameworks */ = {
+		9B6B86771025C2B5EC7A2A23 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -594,7 +594,7 @@
 		};
 		D17A766F240BB96D007A4018 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 741155C93BC4D560EE66B076 /* Pods-Dombra.debug.xcconfig */;
+			baseConfigurationReference = 2C6BAD17B170030EB9301F07 /* Pods-Dombra.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -613,7 +613,7 @@
 		};
 		D17A7670240BB96D007A4018 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B001922C15751A191D909257 /* Pods-Dombra.release.xcconfig */;
+			baseConfigurationReference = 4C36599C69B6E4573B7E53A2 /* Pods-Dombra.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

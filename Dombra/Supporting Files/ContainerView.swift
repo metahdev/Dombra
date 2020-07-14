@@ -26,7 +26,7 @@ class ContainerView: UIView {
         view.backgroundColor = .gray
         view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.white.cgColor
-        view.layer.cornerRadius = 15
+        view.layer.cornerRadius = 5
         
         view.layer.masksToBounds = false
         view.translatesAutoresizingMaskIntoConstraints = false

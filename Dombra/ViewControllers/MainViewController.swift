@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
+
+// ca-app-pub-3940256099942544/2934735716 - test banner id
 
 #warning("TODO")
 /*
@@ -33,10 +37,10 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
     
     #warning("make less count of CVs")
     private lazy var firstKeysCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 1000, CellClass: KeyCollectionViewCell.self, direction: .horizontal, spacing: 4, topInset: 0)
+        return turnToKeyCV(vc: self, tag: 1000, CellClass: KeyCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var firstNotesCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 1002, CellClass: TitleCollectionViewCell.self, direction: .horizontal, spacing: 4, topInset: 0)
+        return turnToKeyCV(vc: self, tag: 1002, CellClass: TitleCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var firstOpenNoteLbl: UILabel = {
         let label = UILabel()
@@ -50,10 +54,10 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
     }()
     
     private lazy var secondKeysCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 1001, CellClass: KeyCollectionViewCell.self, direction: .horizontal, spacing: 4, topInset: 0)
+        return turnToKeyCV(vc: self, tag: 1001, CellClass: KeyCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var secondNotesCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 1003, CellClass: TitleCollectionViewCell.self, direction: .horizontal, spacing: 4, topInset: 0)
+        return turnToKeyCV(vc: self, tag: 1003, CellClass: TitleCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var secondOpenNoteLbl: UILabel = {
         let label = UILabel()
@@ -67,7 +71,7 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
     }()
     
     private lazy var dotsCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 1004, CellClass: DotCollectionViewCell.self, direction: .horizontal, spacing: 4, topInset: 0)
+        return turnToKeyCV(vc: self, tag: 1004, CellClass: DotCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var openKeyView: UIView = {
         let view = UIView()
@@ -83,13 +87,13 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
     }()
     private lazy var keysStateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel("Hide the dombra keys", font: self.view.frame.height * 0.045)
+        lbl.turnToStateLabel("Hide the dombra keys", font: self.view.frame.height * 0.04)
         return lbl
     }()
     
     private lazy var metronomeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel("Metronome", font: self.view.frame.height * 0.06)
+        lbl.turnToStateLabel("Metronome(Grave)", font: self.view.frame.height * 0.045)
         return lbl
     }()
     private lazy var containerView: ContainerView = {
@@ -111,14 +115,9 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
         btn.isEnabled = false
         return btn
     }()
-    private lazy var tempoStateLbl: UILabel = {
-        let lbl = UILabel()
-        lbl.turnToStateLabel("Grave", font: view.frame.height * 0.05)
-        return lbl
-    }()
 
     private lazy var iconsCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 1005, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 20, topInset: 20)
+        return turnToKeyCV(vc: self, tag: 1005, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
     }()
     
     private lazy var firstOpenKeyHighlight: UIView = {
@@ -134,13 +133,21 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
         return v
     }()
     
+    private lazy var bannerView: GADBannerView = {
+        let v = GADBannerView()
+        v.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        v.delegate = self
+        v.rootViewController = self
+        return v
+    }()
+    
     private var icons = ["settings", "question"]
 
     private var animationTimer: Timer?
 
     private var currentTempo = "Grave" {
         didSet {
-            tempoStateLbl.text = currentTempo
+            metronomeLabel.text = ("Metronome(\(currentTempo))")
         }
     }
     private var tempoIndex = 0
@@ -165,6 +172,7 @@ class MainViewController: UIViewController, MainViewControllerProtocol {
         containerView.setupLayout(playButton)
         
         addGesturesToOpenKey()
+        bannerView.load(GADRequest())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -439,6 +447,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
+// MARK:- BannerAd Delegate
+extension MainViewController: GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("ad recieved")
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
+    }
+}
+
+
 extension MainViewController {
     // MARK:- Layout
     private func addSubviews() {
@@ -464,12 +484,12 @@ extension MainViewController {
 
         view.addSubview(metronomeLabel)
         view.addSubview(containerView)
-        view.addSubview(tempoStateLbl)
         view.addSubview(playButton)
         view.addSubview(plusButton)
         view.addSubview(minusButton)
         
         view.addSubview(iconsCV)
+        view.addSubview(bannerView)
     }
 
     private func setAutoresizingToFalse() {
@@ -477,6 +497,8 @@ extension MainViewController {
     }
 
     private func activateConstraints() {
+        #warning("iPad playBtn is incorrect")
+        // or change the whole layout to consider bannerView's height
         NSLayoutConstraint.activate([
             keysCVBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             keysCVBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -540,42 +562,44 @@ extension MainViewController {
             secondString.heightAnchor.constraint(equalTo: firstString.heightAnchor),
 
 
-            keysHidingSwitch.topAnchor.constraint(equalTo: secondNotesCV.bottomAnchor, constant: 16),
+            keysHidingSwitch.topAnchor.constraint(equalTo: secondNotesCV.bottomAnchor, constant: 8),
             keysHidingSwitch.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
 
             keysStateLabel.topAnchor.constraint(equalTo: keysHidingSwitch.bottomAnchor, constant: 8),
             keysStateLabel.leadingAnchor.constraint(equalTo: keysHidingSwitch.leadingAnchor),
 
             metronomeLabel.topAnchor.constraint(equalTo: keysHidingSwitch.topAnchor),
+            metronomeLabel.heightAnchor.constraint(equalToConstant: metronomeLabel.intrinsicContentSize.height),
             metronomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            containerView.leadingAnchor.constraint(equalTo: metronomeLabel.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: metronomeLabel.trailingAnchor),
+            bannerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bannerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
+            
+            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.17),
             containerView.topAnchor.constraint(equalTo: metronomeLabel.bottomAnchor, constant: 8),
-            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
             
             playButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 8),
+            playButton.bottomAnchor.constraint(equalTo: bannerView.topAnchor, constant: -16),
             playButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            playButton.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.3, constant: -8),
-            playButton.heightAnchor.constraint(equalTo: playButton.widthAnchor),
+            playButton.widthAnchor.constraint(equalTo: playButton.heightAnchor),
             
-            minusButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            minusButton.trailingAnchor.constraint(equalTo: playButton.leadingAnchor, constant: -16),
             minusButton.topAnchor.constraint(equalTo: playButton.topAnchor),
             minusButton.heightAnchor.constraint(equalTo: playButton.heightAnchor),
             minusButton.widthAnchor.constraint(equalTo: playButton.widthAnchor),
             
-            plusButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            plusButton.leadingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 16),
             plusButton.widthAnchor.constraint(equalTo: playButton.widthAnchor),
             plusButton.topAnchor.constraint(equalTo: playButton.topAnchor),
             plusButton.heightAnchor.constraint(equalTo: playButton.heightAnchor),
             
-            tempoStateLbl.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 8),
-            tempoStateLbl.leadingAnchor.constraint(equalTo: metronomeLabel.leadingAnchor),
-            tempoStateLbl.trailingAnchor.constraint(equalTo: metronomeLabel.trailingAnchor),
-            
             iconsCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             iconsCV.topAnchor.constraint(equalTo: keysHidingSwitch.topAnchor),
-            iconsCV.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            iconsCV.bottomAnchor.constraint(equalTo: bannerView.topAnchor),
             iconsCV.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.07)
         ])
     }

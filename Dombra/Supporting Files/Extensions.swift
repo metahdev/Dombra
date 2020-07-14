@@ -55,7 +55,7 @@ extension UILabel {
 
 extension UIButton {
     func configureButton(with image: String, target: UIViewController, and action: Selector) {
-        self.setImage(UIImage(named: image), for: .normal)
+        self.setBackgroundImage(UIImage(named: image), for: .normal)
         self.addTarget(target, action: action, for: .touchUpInside)
     }
 }
@@ -83,10 +83,10 @@ extension UIViewController {
 }
 
 // MARK:- Global Functions
-func turnToKeyCV(vc: UIViewController, tag: Int, CellClass: AnyClass, direction: UICollectionView.ScrollDirection, spacing: CGFloat, topInset: CGFloat) -> UICollectionView {
+func turnToKeyCV(vc: UIViewController, tag: Int, CellClass: AnyClass, direction: UICollectionView.ScrollDirection, spacing: CGFloat) -> UICollectionView {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = direction
-    layout.sectionInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     layout.minimumLineSpacing = spacing
     
     let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)

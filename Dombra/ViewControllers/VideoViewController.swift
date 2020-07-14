@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import YoutubePlayer_in_WKWebView
+import youtube_ios_player_helper
 
 
 class VideoViewController: UIViewController {
@@ -15,12 +15,12 @@ class VideoViewController: UIViewController {
     weak var main: MainViewControllerProtocol!
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.infoTitle, font: 20)
+        lbl.turnToStateLabel(Content.infoTitle, font: view.frame.height * 0.05)
         return lbl
     }()
     private lazy var descriptionLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.infoDescription, font: 16)
+        lbl.turnToStateLabel(Content.infoDescription, font: view.frame.height * 0.04)
         return lbl
     }()
     private lazy var closeBtn: UIButton = {
@@ -29,8 +29,8 @@ class VideoViewController: UIViewController {
         btn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         return btn
     }()
-    private lazy var videoView: WKYTPlayerView = {
-        let view = WKYTPlayerView()
+    private lazy var videoView: YTPlayerView = {
+        let view = YTPlayerView()
         view.delegate = self
         view.clipsToBounds = false
         return view
@@ -74,7 +74,7 @@ class VideoViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            closeBtn.trailingAnchor.constraint(equalTo: videoView.leadingAnchor, constant: -4),
+            closeBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             closeBtn.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             closeBtn.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             closeBtn.widthAnchor.constraint(equalTo: closeBtn.heightAnchor),
@@ -93,8 +93,8 @@ class VideoViewController: UIViewController {
     }
 }
 
-extension VideoViewController: WKYTPlayerViewDelegate {
-    func playerViewPreferredWebViewBackgroundColor(_ playerView: WKYTPlayerView) -> UIColor {
+extension VideoViewController: YTPlayerViewDelegate {
+    func playerViewPreferredWebViewBackgroundColor(_ playerView: YTPlayerView) -> UIColor {
         return .clear
     }
 }
