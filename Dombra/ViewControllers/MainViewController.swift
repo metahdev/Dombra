@@ -416,6 +416,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         videoVC = VideoViewController()
         videoVC.main = self
         
+        openKeyView.isUserInteractionEnabled = false 
         videoVC.view.translatesAutoresizingMaskIntoConstraints = false
         videoVC.view.layer.zPosition = 3
     }
@@ -635,6 +636,7 @@ extension MainViewController {
             NSLayoutConstraint.deactivate(self.tempConstraints)
             self.removeBlur()
             self.videoVC.remove()
+            self.openKeyView.isUserInteractionEnabled = true
         })
     }
 }

@@ -26,7 +26,7 @@ extension UIImageView {
     
     func turnToString() {
         self.image = UIImage(named: "string")
-        self.layer.zPosition = 2
+        self.layer.zPosition = 1
         self.isUserInteractionEnabled = false
     }
 }
