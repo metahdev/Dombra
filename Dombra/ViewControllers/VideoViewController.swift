@@ -10,12 +10,12 @@ import UIKit
 import youtube_ios_player_helper
 
 protocol ChildVC: class {
-    var main: MainViewControllerProtocol! { get set }
+    var main: MainVCProtocol! { get set }
 }
 
 class VideoViewController: UIViewController, ChildVC {
     // MARK:- Properties
-    weak var main: MainViewControllerProtocol!
+    weak var main: MainVCProtocol!
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.turnToStateLabel(Content.infoTitle, font: view.frame.height * 0.05)
@@ -75,7 +75,7 @@ class VideoViewController: UIViewController, ChildVC {
             videoView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
             
-            titleLabel.topAnchor.constraint(equalTo: closeBtn.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: closeBtn.topAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),

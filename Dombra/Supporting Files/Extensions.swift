@@ -67,7 +67,7 @@ extension UIButton {
     func activateCloseBtnConstraints(view: UIView) {
         NSLayoutConstraint.activate([
             self.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             self.widthAnchor.constraint(equalTo: self.heightAnchor),
         ])

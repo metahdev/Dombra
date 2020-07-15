@@ -60,7 +60,7 @@ class TitleCollectionViewCell: UICollectionViewCell {
     }
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Avenir-Light", size: self.frame.height * 0.5)
+        lbl.font = UIFont(name: "Avenir-Light", size: self.frame.height * 0.6)
         lbl.textAlignment = .center
         lbl.textColor = .white
         return lbl

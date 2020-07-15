@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "icons8-question-mark-100.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "question.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

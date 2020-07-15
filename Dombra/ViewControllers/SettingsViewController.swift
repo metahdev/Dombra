@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, ChildVC {
     // MARK:- Properties
-    weak var main: MainViewControllerProtocol!
+    weak var main: MainVCProtocol!
     private lazy var closeBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
