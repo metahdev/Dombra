@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "steppe1.png",
+      "filename" : "steppe1.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "steppe.png",
+      "filename" : "steppe.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "steppe3.png",
+      "filename" : "steppe3.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
