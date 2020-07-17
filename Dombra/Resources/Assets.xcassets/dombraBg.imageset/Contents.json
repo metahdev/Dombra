@@ -1,21 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "dombraBg1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
       "filename" : "wood.png",
+      "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "dombraBg3.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

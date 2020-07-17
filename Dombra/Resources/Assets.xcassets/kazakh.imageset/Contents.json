@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "kazakh1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "info.png",
+      "filename" : "kazakh.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "kazakh3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

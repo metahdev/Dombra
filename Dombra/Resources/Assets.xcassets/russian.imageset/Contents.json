@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "russian1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "volumetricDombra.png",
+      "filename" : "russian.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "russian3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
