@@ -172,7 +172,7 @@ extension MainViewController {
     }
     
     private func animWithValue(_ value: CGFloat, completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: Content.animDuration, animations: {
             self.setupAlphaValues(value)
         }, completion: {(_) in
             completion()
