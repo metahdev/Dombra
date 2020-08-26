@@ -54,14 +54,22 @@ extension UILabel {
 }
 
 extension UIButton {
-    func configureButton(with image: String, target: UIViewController, and action: Selector) {
-        self.setBackgroundImage(UIImage(named: image), for: .normal)
+    func configureButton(with image: String?, target: UIViewController, and action: Selector) {
+        if let image = image {
+            self.setBackgroundImage(UIImage(named: image), for: .normal)
+        }
         self.addTarget(target, action: action, for: .touchUpInside)
     }
     
     func turnToCloseBtn(target: UIViewController, action: Selector) {
         self.setImage(UIImage(named: "close"), for: .normal)
         self.addTarget(self, action: action, for: .touchUpInside)
+    }
+    
+    func setupSettingsAppearence() {
+        self.layer.cornerRadius = 15
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 3
     }
     
     func activateCloseBtnConstraints(view: UIView) {

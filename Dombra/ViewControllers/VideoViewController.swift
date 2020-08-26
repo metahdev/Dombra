@@ -38,7 +38,7 @@ class VideoViewController: UIViewController, ChildVC {
         view.clipsToBounds = false
         return view
     }()
-    private let videoID = "s1A6arvZQHI"
+    private let videoID = "JcnGJnhL-xU"
     private let playVarsDic = ["controls": 1, "playsinline": 1, "showinfo": 1, "autoplay": 0, "rel": 0]
         
     
@@ -75,7 +75,7 @@ class VideoViewController: UIViewController, ChildVC {
             videoView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             videoView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
             
-            titleLabel.topAnchor.constraint(equalTo: closeBtn.topAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: closeBtn.centerYAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),

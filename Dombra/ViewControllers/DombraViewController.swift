@@ -27,7 +27,7 @@ class DombraViewController: UIViewController {
     }()
     private lazy var firstOpenNoteLbl: UILabel = {
         let label = UILabel()
-        label.turnToStateLabel(Content.firstOpenNote, font: view.frame.height * 0.04)
+        label.turnToStateLabel(Content.firstOpenNote, font: view.frame.height * 0.05)
         return label
     }()
     private lazy var firstString: UIImageView = {
@@ -44,7 +44,7 @@ class DombraViewController: UIViewController {
     }()
     private lazy var secondOpenNoteLbl: UILabel = {
         let label = UILabel()
-        label.turnToStateLabel(Content.secondOpenNote, font: view.frame.height * 0.04)
+        label.turnToStateLabel(Content.secondOpenNote, font: view.frame.height * 0.05)
         return label
     }()
     private lazy var secondString: UIImageView = {
