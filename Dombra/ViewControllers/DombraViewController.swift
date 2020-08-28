@@ -70,13 +70,13 @@ class DombraViewController: UIViewController {
     }()
     private lazy var keysStateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel("Hide the dombra keys", font: self.view.frame.height * 0.04)
+        lbl.turnToStateLabel(Content.hideState, font: self.view.frame.height * 0.04)
         return lbl
     }()
     
     private lazy var metronomeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel("Metronome(Grave)", font: self.view.frame.height * 0.045)
+        lbl.turnToStateLabel(Content.metronomeTitle + "(\(currentTempo))", font: self.view.frame.height * 0.045)
         return lbl
     }()
     private lazy var containerView: ContainerView = {
@@ -123,7 +123,7 @@ class DombraViewController: UIViewController {
 
     private var currentTempo = "Grave" {
         didSet {
-            metronomeLabel.text = ("Metronome(\(currentTempo))")
+            updateMetronomeText()
         }
     }
     private var tempoIndex = 0
@@ -146,6 +146,15 @@ class DombraViewController: UIViewController {
         addGesturesToOpenKey()
     }
     
+    func updateData() {
+        keysStateLabel.text = keysHidingSwitch.isOn ? Content.showState : Content.hideState
+        updateMetronomeText()
+    }
+    
+    private func updateMetronomeText() {
+        metronomeLabel.text = Content.metronomeTitle + "(\(currentTempo))"
+    }
+    
     private func addGesturesToOpenKey() {
         let touch = UITapGestureRecognizer(target: self, action: #selector(playStringIndividually(recognizer:)))
         
@@ -165,9 +174,9 @@ class DombraViewController: UIViewController {
     @objc
     private func hideOrUnhideKeys() {
         if keysHidingSwitch.isOn {
-            keysStateLabel.text = "Show the dombra keys"
+            keysStateLabel.text = Content.showState
         } else {
-            keysStateLabel.text = "Hide the dombra keys"
+            keysStateLabel.text = Content.hideState
         }
         firstKeysCV.reloadData()
         secondKeysCV.reloadData()
@@ -420,7 +429,6 @@ extension DombraViewController {
         _ = self.view.subviews.map { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
 
-    #warning("how about moving containerView and all the middle stuff a little far left?")
     private func activateConstraints() {
         NSLayoutConstraint.activate([
             keysCVBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),

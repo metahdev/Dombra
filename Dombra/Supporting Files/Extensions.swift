@@ -33,7 +33,7 @@ extension UIImageView {
 
 extension UILabel {
     func turnToContinueLabel(_ view: UIView) {
-        self.text = "Tap anywhere to continue..."
+        self.text = Content.continueText
         self.font = UIFont(name: "Didot", size: view.frame.height * 0.05)
         self.textAlignment = .center
         self.textColor = .white

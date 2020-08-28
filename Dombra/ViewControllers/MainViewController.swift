@@ -14,8 +14,10 @@ import GoogleMobileAds
 
 #warning("TODO")
 /*
- 1. SettingsVC
+ 1. YouTube video and Content
+ 2. Google Ads
  3. Refactoring(sound reusing, less CVs, icons resolutions)
+ 4. Write down future updates' plans
  */
 
 protocol MainVCProtocol: class {
@@ -182,6 +184,7 @@ extension MainViewController {
 
 extension MainViewController {
     func closeChildView() {
+        dombraVC.updateData() 
         animWithValue(0, completion: {
             NSLayoutConstraint.deactivate(self.tempConstraints)
             self.removeBlur()

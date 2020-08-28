@@ -37,6 +37,7 @@ class LoadingViewController: UIViewController {
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
         setupNavigationController()
         
         backgroundImageView.turnToBackground(view, image: "steppe")
@@ -54,6 +55,12 @@ class LoadingViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         AudioPlayer.turnOnBackgroundMusic()
+    }
+    
+    private func fetchData() {
+        if let lang = UserDefaults.standard.value(forKey: "chosenLanguage") as? Language {
+            Content.language = lang 
+        }
     }
     
     private func setupNavigationController() {

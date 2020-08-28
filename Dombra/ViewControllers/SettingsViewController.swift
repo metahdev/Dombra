@@ -6,9 +6,6 @@
 //  Copyright © 2020 devMetah. All rights reserved.
 //
 
-#warning("next version?")
-// https://www.raywenderlich.com/9009-requesting-app-ratings-and-reviews-tutorial-for-ios
-
 import UIKit
 
 class SettingsViewController: UIViewController, ChildVC {
@@ -57,13 +54,12 @@ class SettingsViewController: UIViewController, ChildVC {
     }()
     private lazy var textView: UITextView = {
         let tv = UITextView()
-        tv.isHidden = true
+        tv.alpha = 0
         tv.tag = 2
         tv.isScrollEnabled = true
+        tv.isEditable = false
         tv.backgroundColor = .clear
-        #warning("isn't working")
         tv.font = UIFont(name: "Avenir-Roman", size: view.frame.height * 0.04)
-        tv.text = "DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT DWIGHT"
         tv.textColor = .white
         return tv
     }()
@@ -172,13 +168,6 @@ class SettingsViewController: UIViewController, ChildVC {
         contactDevLbl.alpha = inCredits ? 0 : 1
         creditsBtn.alpha = inCredits ? 0 : 1
         versionLbl.alpha = inCredits ? 0 : 1
-//        #warning("not working")
-//        for subview in view.subviews {
-//            guard subview.tag != 1 else {
-//                return
-//            }
-//            checkSubviewTag(subview)
-//        }
     }
     
     private func checkSubviewTag(_ subview: UIView) {
@@ -235,9 +224,22 @@ extension SettingsViewController: UICollectionViewDelegate {
     }
     
     private func changeLanguage() {
-        #warning("loading screen")
         Content.language = Language(rawValue: Content.languages[selectedLangIndex])!
-        #warning("screen data update")
+        UserDefaults.standard.set(Content.language, forKey: "chosenLanguage")
+
+        LoadingOverlay.showOverlay(vc: self, message: Content.waitingMessage)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            self.updateData()
+            LoadingOverlay.hideOverlayView()
+        })
+    }
+    
+    private func updateData() {
+        settingsLbl.text = Content.settingsTitle
+        chooseLanguageLbl.text = Content.languageInstruction
+        contactDevLbl.text = Content.contactDev
+        creditsBtn.setTitle(Content.creditsTitle, for: .normal)
+        textView.text = Content.credits
     }
 }
 

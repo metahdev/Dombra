@@ -10,6 +10,7 @@
 		86C4B1780047FFD756B3B28E /* Pods_Dombra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B00F2299A4720033E0252D3 /* Pods_Dombra.framework */; };
 		D1175F9C246876150082EB29 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1175F9B246876150082EB29 /* CollectionViewCells.swift */; };
 		D1490C8B246AB45200DB0DE0 /* beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1490C8A246AB45200DB0DE0 /* beat.mp3 */; };
+		D171F82F24F94162007D5B1C /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171F82E24F94162007D5B1C /* LoadingOverlay.swift */; };
 		D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765D240BB96B007A4018 /* AppDelegate.swift */; };
 		D17A7660240BB96B007A4018 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765F240BB96B007A4018 /* SceneDelegate.swift */; };
 		D17A7662240BB96B007A4018 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A7661240BB96B007A4018 /* MainViewController.swift */; };
@@ -75,6 +76,7 @@
 		D1490C8A246AB45200DB0DE0 /* beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beat.mp3; sourceTree = "<group>"; };
 		D15C9BE02415929D00C4E99F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		D15C9BE52415939F00C4E99F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D171F82E24F94162007D5B1C /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		D17A765A240BB96B007A4018 /* Dombra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dombra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17A765D240BB96B007A4018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17A765F240BB96B007A4018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				D17A767A240C2164007A4018 /* Extensions.swift */,
 				D1175F9B246876150082EB29 /* CollectionViewCells.swift */,
 				D192FCF124B3108300C5660E /* ContainerView.swift */,
+				D171F82E24F94162007D5B1C /* LoadingOverlay.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				D17A767F240C24EF007A4018 /* Animator.swift in Sources */,
 				D17A7675240BE9AC007A4018 /* LoadingViewController.swift in Sources */,
 				D192FCF224B3108300C5660E /* ContainerView.swift in Sources */,
+				D171F82F24F94162007D5B1C /* LoadingOverlay.swift in Sources */,
 				D17A767B240C2164007A4018 /* Extensions.swift in Sources */,
 				D192FCF624B380E100C5660E /* SettingsViewController.swift in Sources */,
 			);
@@ -604,6 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCRS3R4AUU;
 				INFOPLIST_FILE = Dombra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -623,6 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCRS3R4AUU;
 				INFOPLIST_FILE = Dombra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
