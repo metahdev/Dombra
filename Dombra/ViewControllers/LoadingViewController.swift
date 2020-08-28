@@ -58,8 +58,8 @@ class LoadingViewController: UIViewController {
     }
     
     private func fetchData() {
-        if let lang = UserDefaults.standard.value(forKey: "chosenLanguage") as? Language {
-            Content.language = lang 
+        if let lang = UserDefaults.standard.value(forKey: "chosenLanguage") as? String {
+            Content.language = Language(rawValue: lang)!
         }
     }
     

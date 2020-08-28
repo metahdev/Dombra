@@ -299,14 +299,25 @@ class DombraViewController: UIViewController {
     }
 
     private func animateString(_ string: UIImageView) {
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.07
-        animation.repeatCount = 5
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y + 1))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y - 1))
+        #warning("test the speed")
+        for _ in 0...4 {
+            UIView.animateKeyframes(withDuration: 0.07, delay: 0.0, options: [.allowUserInteraction], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+                    string.center.y += 1
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                    string.center.y -= 1
+                })
+            }, completion: nil)
+        }
+//        let animation = CABasicAnimation(keyPath: "position")
+//        animation.duration = 0.07
+//        animation.repeatCount = 5
+//        animation.autoreverses = true
+//        animation.fromValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y + 1))
+//        animation.toValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y - 1))
 
-        string.layer.add(animation, forKey: "position")
+//        string.layer.add(animation, forKey: "position")
     }
 }
 

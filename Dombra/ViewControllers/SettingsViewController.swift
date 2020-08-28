@@ -103,7 +103,7 @@ class SettingsViewController: UIViewController, ChildVC {
             settingsLbl.centerYAnchor.constraint(equalTo: closeBtn.centerYAnchor),
             settingsLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            languagesCV.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+            languagesCV.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             languagesCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             languagesCV.topAnchor.constraint(equalTo: settingsLbl.bottomAnchor, constant: 16),
             languagesCV.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
@@ -225,7 +225,7 @@ extension SettingsViewController: UICollectionViewDelegate {
     
     private func changeLanguage() {
         Content.language = Language(rawValue: Content.languages[selectedLangIndex])!
-        UserDefaults.standard.set(Content.language, forKey: "chosenLanguage")
+        UserDefaults.standard.set(Content.language.rawValue, forKey: "chosenLanguage")
 
         LoadingOverlay.showOverlay(vc: self, message: Content.waitingMessage)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
