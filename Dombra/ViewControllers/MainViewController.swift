@@ -15,7 +15,7 @@ import GoogleMobileAds
 /*
  1. YouTube video and Content
  2. Google Ads
- 3. Refactoring(sound reusing, less CVs, icons resolutions)
+ 3. Refactoring(sound reusing, less CVs)
  4. Write down future updates' plans
  */
 
