@@ -52,42 +52,6 @@ class KeyCollectionViewCell: UICollectionViewCell {
     }
 }
 
-class TitleCollectionViewCell: UICollectionViewCell {
-    var title = "" {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-    private lazy var titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = UIFont(name: "Avenir-Light", size: self.frame.height * 0.6)
-        lbl.textAlignment = .center
-        lbl.textColor = .white
-        return lbl
-    }()
-    
-    // MARK:- Initialization
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        activateConstraints()
-    }
-    
-    private func activateConstraints() {
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
-    }
-}
-
 class DotCollectionViewCell: UICollectionViewCell {
     func createDot() {
         let circle = UIView()

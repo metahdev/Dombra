@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController, ChildVC {
         return lbl
     }()
     private lazy var languagesCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 3, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
+        return turnToKeyCV(vc: self, tag: 1, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
     }()
     private lazy var contactDevLbl: UILabel = {
         let lbl = UILabel()
@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController, ChildVC {
         return lbl
     }()
     private lazy var devLinksCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 4, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
+        return turnToKeyCV(vc: self, tag: 2, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
     }()
     private lazy var creditsBtn: UIButton = {
         let btn = UIButton()
@@ -55,7 +55,7 @@ class SettingsViewController: UIViewController, ChildVC {
     private lazy var textView: UITextView = {
         let tv = UITextView()
         tv.alpha = 0
-        tv.tag = 2
+        tv.tag = 3
         tv.isScrollEnabled = true
         tv.isEditable = false
         tv.backgroundColor = .clear
@@ -161,20 +161,16 @@ class SettingsViewController: UIViewController, ChildVC {
     }
     
     private func changeViewAlpha() {
-        textView.alpha = inCredits ? 1 : 0
-        chooseLanguageLbl.alpha = inCredits ? 0 : 1
-        languagesCV.alpha = inCredits ? 0 : 1
-        devLinksCV.alpha = inCredits ? 0 : 1
-        contactDevLbl.alpha = inCredits ? 0 : 1
-        creditsBtn.alpha = inCredits ? 0 : 1
-        versionLbl.alpha = inCredits ? 0 : 1
+        for subview in view.subviews {
+            checkSubviewTag(subview)
+        }
     }
     
     private func checkSubviewTag(_ subview: UIView) {
-        if subview.tag == 2 {
-            subview.isHidden = !inCredits
+        if subview.tag == 3 {
+            subview.alpha = inCredits ? 1 : 0
         } else {
-            subview.isHidden = inCredits
+            subview.alpha = inCredits ? 0 : 1
         }
     }
 }
@@ -182,7 +178,7 @@ class SettingsViewController: UIViewController, ChildVC {
 
 extension SettingsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag == 3 {
+        if collectionView.tag == 1 {
             return Content.languages.count
         } else {
             return Content.contacts.count
@@ -191,7 +187,7 @@ extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        if collectionView.tag == 3 {
+        if collectionView.tag == 1 {
             cell.imageName = Content.languages[indexPath.row]
             if Content.language.rawValue == Content.languages[indexPath.row] {
                 selectedLangIndex = indexPath.row
@@ -212,7 +208,7 @@ extension SettingsViewController: UICollectionViewDataSource {
 
 extension SettingsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.tag == 3 {
+        if collectionView.tag == 1 {
             visualizeSelectedLang(false)
             selectedLangIndex = indexPath.row
             visualizeSelectedLang(true)
@@ -226,11 +222,11 @@ extension SettingsViewController: UICollectionViewDelegate {
     private func changeLanguage() {
         Content.language = Language(rawValue: Content.languages[selectedLangIndex])!
         UserDefaults.standard.set(Content.language.rawValue, forKey: "chosenLanguage")
-
-        LoadingOverlay.showOverlay(vc: self, message: Content.waitingMessage)
+        
+        LoadingOverlay.shared.showOverlay(vc: self, message: Content.waitingMessage)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.updateData()
-            LoadingOverlay.hideOverlayView()
+            LoadingOverlay.shared.hideOverlayView()
         })
     }
     

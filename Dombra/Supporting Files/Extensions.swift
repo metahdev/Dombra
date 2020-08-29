@@ -119,7 +119,7 @@ func turnToKeyCV(vc: UIViewController, tag: Int, CellClass: AnyClass, direction:
     cv.dataSource = vc as? UICollectionViewDataSource
     cv.tag = tag
     cv.isUserInteractionEnabled = true
-    if tag > 1001 && tag != 1005 {
+    if tag == 3 {
         cv.isUserInteractionEnabled = false
     }
     cv.backgroundColor = .clear

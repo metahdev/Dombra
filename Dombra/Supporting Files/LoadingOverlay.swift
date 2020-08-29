@@ -8,11 +8,13 @@
 
 import UIKit
 
-struct LoadingOverlay {
-    private static var alert: UIAlertController!
-    private static var indicator: UIActivityIndicatorView!
+class LoadingOverlay {
+    static var shared = LoadingOverlay()
     
-    static func showOverlay(vc: UIViewController, message: String) {
+    private var alert: UIAlertController!
+    private var indicator: UIActivityIndicatorView!
+    
+    func showOverlay(vc: UIViewController, message: String) {
         alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
 
         indicator = UIActivityIndicatorView()
@@ -30,7 +32,7 @@ struct LoadingOverlay {
         vc.present(alert, animated: true, completion: nil)
     }
     
-    static func hideOverlayView() {
+    func hideOverlayView() {
         indicator.stopAnimating()
         alert.dismiss(animated: true, completion: nil)
     }
