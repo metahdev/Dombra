@@ -11,7 +11,6 @@ import GoogleMobileAds
 
 
 // ca-app-pub-3940256099942544/2934735716 - test banner id
-
 #warning("TODO")
 /*
  1. YouTube video and Content
