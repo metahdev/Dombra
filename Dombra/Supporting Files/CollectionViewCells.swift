@@ -8,11 +8,42 @@
 
 import UIKit
 
+protocol KeyCVCellDelegate: class {
+    func handleGesture(_ cell: KeyCollectionViewCell, _ wentOutOfTheBounds: Bool)
+}
+
+
 class KeyCollectionViewCell: UICollectionViewCell {
     // MARK:- Properties
+    weak var delegate: KeyCVCellDelegate!
+    var cvTag = 0
+    var index = 0
+    
     var clearBlurEffectView: UIVisualEffectView?
     var greenBlurEffectView: UIVisualEffectView?
+        
+    private lazy var swipeUpGesture: UISwipeGestureRecognizer = {
+        let gest = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
+        gest.direction = .up
+        return gest
+    }()
+    private lazy var swipeDownGesture: UISwipeGestureRecognizer = {
+        let gest = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
+        gest.direction = .down
+        return gest
+    }()
     
+    
+    // MARK:- Cell creation
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addGestureRecognizer(swipeUpGesture)
+        self.addGestureRecognizer(swipeDownGesture)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     //MARK:- Cell separation
     override func draw(_ rect: CGRect) {
@@ -22,6 +53,21 @@ class KeyCollectionViewCell: UICollectionViewCell {
         cgContext?.setStrokeColor(Content.silverColor.cgColor)
         cgContext?.setLineWidth(4.0)
         cgContext?.strokePath()
+    }
+    
+    
+    // MARK:- Actions
+    @objc
+    private func swipe(_ gesture: UISwipeGestureRecognizer) {
+        var wentOutOfTheBounds = false
+        switch gesture.state {
+        case .changed:
+            let point = gesture.location(in: self)
+            wentOutOfTheBounds = self.bounds.maxY < point.y
+        default:
+            break
+        }
+        delegate.handleGesture(self, wentOutOfTheBounds)
     }
     
     

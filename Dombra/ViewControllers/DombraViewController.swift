@@ -293,25 +293,14 @@ class DombraViewController: UIViewController {
     }
 
     private func animateString(_ string: UIImageView) {
-        #warning("test the speed")
-        for _ in 0...4 {
-            UIView.animateKeyframes(withDuration: 0.07, delay: 0.0, options: [.allowUserInteraction], animations: {
-                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
-                    string.center.y += 1
-                })
-                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                    string.center.y -= 1
-                })
-            }, completion: nil)
-        }
-//        let animation = CABasicAnimation(keyPath: "position")
-//        animation.duration = 0.07
-//        animation.repeatCount = 5
-//        animation.autoreverses = true
-//        animation.fromValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y + 1))
-//        animation.toValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y - 1))
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y + 1))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y - 1))
 
-//        string.layer.add(animation, forKey: "position")
+        string.layer.add(animation, forKey: "position")
     }
 }
 
@@ -339,10 +328,14 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         }
         
+        let keyCell = (cell as! KeyCollectionViewCell)
+        keyCell.cvTag = collectionView.tag
+        keyCell.index = indexPath.row
+        keyCell.delegate = self
         if keysHidingSwitch.isOn {
-            (cell as? KeyCollectionViewCell)?.addBlurEffectViews()
+            keyCell.addBlurEffectViews()
         } else {
-            (cell as? KeyCollectionViewCell)?.removeBlurs()
+            keyCell.removeBlurs()
         }
         
         return cell
@@ -386,6 +379,30 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 side = collectionView.frame.height / 2 - 10
             }
             return CGSize(width: side, height: side)
+        }
+    }
+}
+
+extension DombraViewController: KeyCVCellDelegate {
+    func handleGesture(_ cell: KeyCollectionViewCell, _ wentOutOfTheBounds: Bool) {
+        #warning("refactor")
+        if wentOutOfTheBounds {
+            AudioPlayer.playFirstStringNote(cell.index)
+            animateString(firstString)
+            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: firstKeysCV)
+            AudioPlayer.playSecondStringNote(cell.index)
+            animateString(secondString)
+            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: secondKeysCV)
+            return
+        }
+        if cell.cvTag == 1 {
+            AudioPlayer.playFirstStringNote(cell.index)
+            animateString(firstString)
+            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: firstKeysCV)
+        } else {
+            AudioPlayer.playSecondStringNote(cell.index)
+            animateString(secondString)
+            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: secondKeysCV)
         }
     }
 }
