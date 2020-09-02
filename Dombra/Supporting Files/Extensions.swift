@@ -89,7 +89,6 @@ extension UIView {
     }
 }
 
-
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)
@@ -119,7 +118,7 @@ func turnToKeyCV(vc: UIViewController, tag: Int, CellClass: AnyClass, direction:
     cv.dataSource = vc as? UICollectionViewDataSource
     cv.tag = tag
     cv.isUserInteractionEnabled = true
-    if tag == 3 {
+    if cv.tag == 5 {
         cv.isUserInteractionEnabled = false
     }
     cv.backgroundColor = .clear

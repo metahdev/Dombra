@@ -15,12 +15,13 @@ class SettingsViewController: UIViewController, ChildVC {
         let btn = UIButton()
         btn.setImage(UIImage(named: "close"), for: .normal)
         btn.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-        btn.tag = 1
+        btn.tag = 3
         return btn
     }()
     private lazy var settingsLbl: UILabel = {
         let lbl = UILabel()
         lbl.turnToStateLabel(Content.settingsTitle, font: view.frame.height * 0.07)
+        lbl.tag = 4
         return lbl
     }()
     private lazy var chooseLanguageLbl: UILabel = {
@@ -55,10 +56,11 @@ class SettingsViewController: UIViewController, ChildVC {
     private lazy var textView: UITextView = {
         let tv = UITextView()
         tv.alpha = 0
-        tv.tag = 3
+        tv.tag = 5
         tv.isScrollEnabled = true
         tv.isEditable = false
         tv.backgroundColor = .clear
+        tv.text = Content.credits
         tv.font = UIFont(name: "Avenir-Roman", size: view.frame.height * 0.04)
         tv.textColor = .white
         return tv
@@ -167,7 +169,10 @@ class SettingsViewController: UIViewController, ChildVC {
     }
     
     private func checkSubviewTag(_ subview: UIView) {
-        if subview.tag == 3 {
+        guard subview.tag != 3 && subview.tag != 4 else {
+            return
+        }
+        if subview.tag == 5 {
             subview.alpha = inCredits ? 1 : 0
         } else {
             subview.alpha = inCredits ? 0 : 1

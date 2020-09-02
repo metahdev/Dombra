@@ -8,43 +8,12 @@
 
 import UIKit
 
-protocol KeyCVCellDelegate: class {
-    func handleGesture(_ cell: KeyCollectionViewCell, _ wentOutOfTheBounds: Bool)
-}
-
-
 class KeyCollectionViewCell: UICollectionViewCell {
     // MARK:- Properties
-    weak var delegate: KeyCVCellDelegate!
-    var cvTag = 0
-    var index = 0
-    
     var clearBlurEffectView: UIVisualEffectView?
     var greenBlurEffectView: UIVisualEffectView?
-        
-    private lazy var swipeUpGesture: UISwipeGestureRecognizer = {
-        let gest = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
-        gest.direction = .up
-        return gest
-    }()
-    private lazy var swipeDownGesture: UISwipeGestureRecognizer = {
-        let gest = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
-        gest.direction = .down
-        return gest
-    }()
     
-    
-    // MARK:- Cell creation
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.addGestureRecognizer(swipeUpGesture)
-        self.addGestureRecognizer(swipeDownGesture)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
+ 
     //MARK:- Cell separation
     override func draw(_ rect: CGRect) {
         let cgContext = UIGraphicsGetCurrentContext()
@@ -54,22 +23,7 @@ class KeyCollectionViewCell: UICollectionViewCell {
         cgContext?.setLineWidth(4.0)
         cgContext?.strokePath()
     }
-    
-    
-    // MARK:- Actions
-    @objc
-    private func swipe(_ gesture: UISwipeGestureRecognizer) {
-        var wentOutOfTheBounds = false
-        switch gesture.state {
-        case .changed:
-            let point = gesture.location(in: self)
-            wentOutOfTheBounds = self.bounds.maxY < point.y
-        default:
-            break
-        }
-        delegate.handleGesture(self, wentOutOfTheBounds)
-    }
-    
+
     
     // MARK:- Highlighting
     func addBlurEffectViews() {
@@ -113,6 +67,43 @@ class DotCollectionViewCell: UICollectionViewCell {
             circle.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
         circle.layer.cornerRadius = constant * 0.5
+    }
+}
+
+
+class TitleCollectionViewCell: UICollectionViewCell {
+    var title = "" {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    private lazy var titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = UIFont(name: "Avenir-Light", size: self.frame.height * 0.6)
+        lbl.textAlignment = .center
+        lbl.textColor = .white
+        return lbl
+    }()
+    
+    // MARK:- Initialization
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        activateConstraints()
+    }
+    
+    private func activateConstraints() {
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 }
 

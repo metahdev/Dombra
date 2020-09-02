@@ -18,9 +18,11 @@ class DombraViewController: UIViewController {
         return iv
     }()
     
-    #warning("make less count of CVs")
     private lazy var firstKeysCV: UICollectionView = {
         return turnToKeyCV(vc: self, tag: 1, CellClass: KeyCollectionViewCell.self, direction: .horizontal, spacing: 4)
+    }()
+    private lazy var firstNotesCV: UICollectionView = {
+        return turnToKeyCV(vc: self, tag: 3, CellClass: TitleCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var firstOpenNoteLbl: UILabel = {
         let label = UILabel()
@@ -36,6 +38,9 @@ class DombraViewController: UIViewController {
     private lazy var secondKeysCV: UICollectionView = {
         return turnToKeyCV(vc: self, tag: 2, CellClass: KeyCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
+    private lazy var secondNotesCV: UICollectionView = {
+        return turnToKeyCV(vc: self, tag: 4, CellClass: TitleCollectionViewCell.self, direction: .horizontal, spacing: 4)
+    }()
     private lazy var secondOpenNoteLbl: UILabel = {
         let label = UILabel()
         label.turnToStateLabel(Content.secondOpenNote, font: view.frame.height * 0.05)
@@ -48,7 +53,7 @@ class DombraViewController: UIViewController {
     }()
     
     private lazy var dotsCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 3, CellClass: DotCollectionViewCell.self, direction: .horizontal, spacing: 4)
+        return turnToKeyCV(vc: self, tag: 5, CellClass: DotCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
     private lazy var openKeyView: UIView = {
         let view = UIView()
@@ -94,7 +99,7 @@ class DombraViewController: UIViewController {
     }()
 
     private lazy var iconsCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 4, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
+        return turnToKeyCV(vc: self, tag: 6, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 10)
     }()
     
     private lazy var firstOpenKeyHighlight: UIView = {
@@ -257,11 +262,9 @@ class DombraViewController: UIViewController {
         
         if point.y < height * 0.5 {
             firstStringDragged(0)
-            
             animateHighlighting(viewToHighlight: firstOpenKeyHighlight, keysCV: firstKeysCV)
         } else {
             secondStringDragged(0)
-            
             animateHighlighting(viewToHighlight: secondOpenKeyHighlight, keysCV: secondKeysCV)
         }
     }
@@ -307,7 +310,7 @@ class DombraViewController: UIViewController {
 
 extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag < 4 {
+        if collectionView.tag < 6 {
             return 19
         } else {
             return icons.count
@@ -317,21 +320,26 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath)
         cell.backgroundColor = .clear
+        cell.isUserInteractionEnabled = false
         
-        if collectionView.tag == 4 {
+        if collectionView.tag == 6 {
             (cell as! ImageCollectionViewCell).imageName = icons[indexPath.row]
+            cell.isUserInteractionEnabled = true
             return cell
         }
         
-        if collectionView.tag == 3 {
-            configureDotCVCell(indexPath.row, cell)
+        if collectionView.tag == 5 {
+            configureDotCVCell(indexPath.row, cell as! DotCollectionViewCell)
+            return cell
+        }
+        
+        if collectionView.tag > 2 {
+            (cell as! TitleCollectionViewCell).title = collectionView.tag == 4 ? Content.secondNotes[indexPath.row] : Content.firstNotes[indexPath.row]
             return cell
         }
         
         let keyCell = (cell as! KeyCollectionViewCell)
-        keyCell.cvTag = collectionView.tag
-        keyCell.index = indexPath.row
-        keyCell.delegate = self
+        keyCell.isUserInteractionEnabled = true
         if keysHidingSwitch.isOn {
             keyCell.addBlurEffectViews()
         } else {
@@ -341,10 +349,10 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    private func configureDotCVCell(_ index: Int, _ cell: UICollectionViewCell) {
+    private func configureDotCVCell(_ index: Int, _ cell: DotCollectionViewCell) {
         switch (index) {
         case 2, 5, 7, 9, 12, 14, 17:
-            (cell as! DotCollectionViewCell).createDot()
+            cell.createDot()
         default: return
         }
     }
@@ -359,7 +367,7 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
         } else if collectionView.tag == 2 {
             secondStringDragged(index)
             animateHighlighting(viewToHighlight: cell?.greenBlurEffectView, keysCV: secondKeysCV)
-        } else if collectionView.tag == 4 {
+        } else if collectionView.tag == 6 {
             stopMetronome()
             if indexPath.row == 0 {
                 main.showSettingsVC()
@@ -370,7 +378,7 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView.tag < 4 {
+        if collectionView.tag < 6 {
             let width = (collectionView.frame.width / 19) - 4
             return CGSize(width: width, height: collectionView.frame.height)
         } else {
@@ -379,30 +387,6 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 side = collectionView.frame.height / 2 - 10
             }
             return CGSize(width: side, height: side)
-        }
-    }
-}
-
-extension DombraViewController: KeyCVCellDelegate {
-    func handleGesture(_ cell: KeyCollectionViewCell, _ wentOutOfTheBounds: Bool) {
-        #warning("refactor")
-        if wentOutOfTheBounds {
-            AudioPlayer.playFirstStringNote(cell.index)
-            animateString(firstString)
-            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: firstKeysCV)
-            AudioPlayer.playSecondStringNote(cell.index)
-            animateString(secondString)
-            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: secondKeysCV)
-            return
-        }
-        if cell.cvTag == 1 {
-            AudioPlayer.playFirstStringNote(cell.index)
-            animateString(firstString)
-            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: firstKeysCV)
-        } else {
-            AudioPlayer.playSecondStringNote(cell.index)
-            animateString(secondString)
-            animateHighlighting(viewToHighlight: cell.greenBlurEffectView, keysCV: secondKeysCV)
         }
     }
 }
@@ -416,11 +400,13 @@ extension DombraViewController {
         view.addSubview(openKeyView)
         view.addSubview(firstOpenKeyHighlight)
         view.addSubview(firstKeysCV)
+        view.addSubview(firstNotesCV)
         view.addSubview(firstOpenNoteLbl)
         view.addSubview(firstString)
 
         view.addSubview(secondOpenKeyHighlight)
         view.addSubview(secondKeysCV)
+        view.addSubview(secondNotesCV)
         view.addSubview(secondOpenNoteLbl)
         view.addSubview(secondString)
 
@@ -464,7 +450,12 @@ extension DombraViewController {
             secondOpenKeyHighlight.topAnchor.constraint(equalTo: firstOpenKeyHighlight.bottomAnchor),
             secondOpenKeyHighlight.bottomAnchor.constraint(equalTo: openKeyView.bottomAnchor),
 
-            firstOpenNoteLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            firstNotesCV.leadingAnchor.constraint(equalTo: openKeyView.trailingAnchor),
+            firstNotesCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            firstNotesCV.bottomAnchor.constraint(equalTo: keysCVBackground.topAnchor),
+            firstNotesCV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+
+            firstOpenNoteLbl.centerYAnchor.constraint(equalTo: firstNotesCV.centerYAnchor),
             firstOpenNoteLbl.centerXAnchor.constraint(equalTo: openKeyView.centerXAnchor),
 
             firstKeysCV.leadingAnchor.constraint(equalTo: openKeyView.trailingAnchor),
@@ -477,7 +468,12 @@ extension DombraViewController {
             secondKeysCV.topAnchor.constraint(equalTo: firstKeysCV.bottomAnchor),
             secondKeysCV.heightAnchor.constraint(equalTo: firstKeysCV.heightAnchor),
 
-            secondOpenNoteLbl.topAnchor.constraint(equalTo: secondKeysCV.bottomAnchor),
+            secondNotesCV.leadingAnchor.constraint(equalTo: firstNotesCV.leadingAnchor),
+            secondNotesCV.trailingAnchor.constraint(equalTo: firstNotesCV.trailingAnchor),
+            secondNotesCV.topAnchor.constraint(equalTo: secondKeysCV.bottomAnchor),
+            secondNotesCV.heightAnchor.constraint(equalTo: firstNotesCV.heightAnchor),
+
+            secondOpenNoteLbl.centerYAnchor.constraint(equalTo: secondNotesCV.centerYAnchor),
             secondOpenNoteLbl.centerXAnchor.constraint(equalTo: openKeyView.centerXAnchor),
 
             dotsCV.leadingAnchor.constraint(equalTo: secondKeysCV.leadingAnchor),
@@ -496,7 +492,7 @@ extension DombraViewController {
             secondString.heightAnchor.constraint(equalTo: firstString.heightAnchor),
 
 
-            keysHidingSwitch.topAnchor.constraint(equalTo: secondOpenNoteLbl.bottomAnchor, constant: 8),
+            keysHidingSwitch.topAnchor.constraint(equalTo: secondNotesCV.bottomAnchor, constant: 8),
             keysHidingSwitch.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
 
             keysStateLabel.topAnchor.constraint(equalTo: keysHidingSwitch.bottomAnchor, constant: 8),
