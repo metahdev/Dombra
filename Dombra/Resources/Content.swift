@@ -56,11 +56,8 @@ struct Content {
     static var metronomeTitle: String {
         return metronomeTitles[language]!
     }
-    static var hideState: String {
-        return hideStates[language]!
-    }
-    static var showState: String {
-        return showStates[language]!
+    static var state: String {
+        return states[language]!
     }
 
     static var infoTitle: String {
@@ -89,22 +86,21 @@ struct Content {
         return waitingMessages[language]!
     }
     
-    private static let continueTexts: [Language: String] = [.Kazakh: "Жалғастыру үшін экранға басыңыз", .English: "Tap anywhere to continue", .Russian: "Нажмите для продолжения"]
+    private static let continueTexts: [Language: String] = [.Kazakh: "Жалғастыру үшін экранды басыңыз", .English: "Tap anywhere to continue", .Russian: "Нажмите для продолжения"]
     private static let metronomeTitles: [Language: String] = [.Kazakh: "Метроном", .English: "Metronome", .Russian: "Метроном"]
-    private static let hideStates: [Language: String] = [.Kazakh: "Домбрының ладтары жасырын", .English: "The dombra keys are hidden", .Russian: "Лады домбры скрыты"]
-    private static let showStates: [Language: String] = [.Kazakh: "Домбрының ладтары көрсетілген", .English: "The dombra keys are shown", .Russian: "Лады домбры показаны"]
+    private static let states: [Language: String] = [.Kazakh: "Пернелерді бөлектенуге", .English: "Highlight the dombra keys", .Russian: "Подсвечивать лады домбры"]
     
-    private static let infoTitles: [Language: String] = [.Kazakh: "Бағдарламаны қалай қолдануды білмейсіз бе?", .English: "Wondering how to use the app?", .Russian: "Не знаете как пользоваться приложением?"]
+    private static let infoTitles: [Language: String] = [.Kazakh: "Көмек", .English: "Help", .Russian: "Помощь"]
     private static let infoDescriptions: [Language: String] = [.Kazakh: "Бұл бейнебаянды қарап, қосымшаның барлық функциялармен таныса аласыз!", .English: "Watch this video to get familiar with the app's all features!", .Russian: "Просмотрите данный видеоролик для ознакомления со всеми функциями приложения!"]
     
     private static let settingsTitles: [Language: String] = [.Kazakh: "Параметрлер", .English: "Settings", .Russian: "Настройки"]
     private static let languageInstructions: [Language: String] = [.Kazakh: "Тілді таңдаңыз:", .English: "Choose a language:", .Russian: "Выберите язык:"]
     private static let contactDevTitles: [Language: String] = [.Kazakh: "Әзірлеушімен байланысу:", .English: "Contact the developer:", .Russian: "Связаться с разработчиком:"]
-    private static let creditsTitles: [Language: String] = [.Kazakh: "Ризашылық", .English: "Credits", .Russian: "Признательность"]
+    private static let creditsTitles: [Language: String] = [.Kazakh: "Несиелер", .English: "Credits", .Russian: "Титры"]
     private static let creditsVariety: [Language: String] = [.Kazakh: creditsKazakh, .English: creditsEnglish, .Russian: creditsRussian]
     private static let waitingMessages: [Language: String] = [.Kazakh: "Күте тұрыңыз...", .English: "Please wait...", .Russian: "Пожалуйста подождите..."]
     
-    private static let creditsKazakh = "    Қош келдіңіздер! 👋🏻 Менің қосымшамды жүктегеніңіз үшін рақмет! Менің атым - Асқар Әлмұхамет, мен Қазақстаннан iOS әзірлеушімін. Бұл бағдарлама, сіз түсінгендей, қазақтың ұлттық ішекті аспабы - домбыраның симуляторы. Соған қарамастан, мен бұл қосымшаның ешқандай жағдайда нақты құралды алмастыра алмайтынын, керісінше оған кіріспе немесе жаңадан бастағандарға жаттығу жасау әдісі екенін баса айтқым келеді.\n\nПайдаланылған материалдар 📌: \n\nБасында фондық музыка: Дәулеткерейдің күйі 'Қосалқа'"
+    private static let creditsKazakh = "    Қош келдіңіздер! 👋🏻 Менің қосымшамды жүктегеніңіз үшін рақмет! Менің атым - Асқар Әлмұхамет, мен Қазақстаннан iOS әзірлеушімін. Бұл бағдарлама, сіз түсінгендей, қазақтың ұлттық ішекті аспабы - домбыраның симуляторы. Соған қарамастан, мен бұл қосымшаның ешқандай жағдайда нақты құралды алмастыра алмайтынын, керісінше оған кіріспе немесе жаңадан бастағандарға жаттығу жасау әдісі екенін баса айтқым келеді.\n\nПайдаланылған материалдар 📌: \nБасында фондық музыка: Дәулеткерейдің күйі 'Қосалқа'"
     private static let creditsEnglish = "   🇰🇿 Salem alem!👋🏻 Thanks for downloading my app! My name is Askar Almukhamet, I am an iOS developer from Kazakhstan. This application, as you may already understood, is a simulator of a Kazakh national string instrument - Dombra. Please note that the application is definitely not an alternative of the real instrument, but rather an useful way to get familiar with the instrument.\n\nResources Used 📌: \nThe background music in the beginning: Dauletkerei's 'Qosalqa'"
     private static let creditsRussian = "   Добро пожаловать!👋🏻 Спасибо за загрузку моего приложения! Меня зовут Аскар Альмухаметов, я iOS разработчик с Казахстана. Это программа, как вы уже вероятно поняли, является симулятором Казахского национального струнного инструмента - Домбры. Тем не менее, хочу подчеркнуть, что приложение никак не является заменой реального инструмента, а больше ознакомлением с ним или же способом для практики новичков.\n\nИспользованные материалы 📌: \nФоновая музыка в начале: Даулеткерей - 'Қосалқа'"
 }

@@ -69,13 +69,13 @@ class DombraViewController: UIViewController {
     }()
     private lazy var keysStateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.hideState, font: self.view.frame.height * 0.04)
+        lbl.turnToStateLabel(Content.state, font: self.view.frame.width * 0.02)
         return lbl
     }()
     
     private lazy var metronomeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.metronomeTitle + "(\(currentTempo))", font: self.view.frame.height * 0.045)
+        lbl.turnToStateLabel(Content.metronomeTitle + "(\(currentTempo))", font: self.view.frame.width * 0.023)
         return lbl
     }()
     private lazy var containerView: ContainerView = {
@@ -146,7 +146,7 @@ class DombraViewController: UIViewController {
     }
     
     func updateData() {
-        keysStateLabel.text = keysHidingSwitch.isOn ? Content.showState : Content.hideState
+        keysStateLabel.text = Content.state
         updateMetronomeText()
     }
     
@@ -172,11 +172,6 @@ class DombraViewController: UIViewController {
     // MARK:- Switches
     @objc
     private func hideOrUnhideKeys() {
-        if keysHidingSwitch.isOn {
-            keysStateLabel.text = Content.showState
-        } else {
-            keysStateLabel.text = Content.hideState
-        }
         firstKeysCV.reloadData()
         secondKeysCV.reloadData()
     }

@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "wood.jpg",
+      "filename" : "wood1.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "wood1.jpg",
+      "filename" : "wood3.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "wood3.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

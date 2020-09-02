@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController, ChildVC {
     }()
     private lazy var chooseLanguageLbl: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.languageInstruction, font: view.frame.height * 0.05)
+        lbl.turnToStateLabel(Content.languageInstruction, font: view.frame.width * 0.022)
         return lbl
     }()
     private lazy var languagesCV: UICollectionView = {
@@ -34,7 +34,7 @@ class SettingsViewController: UIViewController, ChildVC {
     }()
     private lazy var contactDevLbl: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.contactDev, font: view.frame.height * 0.05)
+        lbl.turnToStateLabel(Content.contactDev, font: view.frame.width * 0.022)
         return lbl
     }()
     private lazy var devLinksCV: UICollectionView = {
@@ -105,7 +105,6 @@ class SettingsViewController: UIViewController, ChildVC {
             settingsLbl.centerYAnchor.constraint(equalTo: closeBtn.centerYAnchor),
             settingsLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            languagesCV.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             languagesCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             languagesCV.topAnchor.constraint(equalTo: settingsLbl.bottomAnchor, constant: 16),
             languagesCV.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
@@ -113,13 +112,16 @@ class SettingsViewController: UIViewController, ChildVC {
             chooseLanguageLbl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             chooseLanguageLbl.trailingAnchor.constraint(lessThanOrEqualTo: languagesCV.trailingAnchor, constant: -12),
             chooseLanguageLbl.centerYAnchor.constraint(equalTo: languagesCV.centerYAnchor),
+                        
+            contactDevLbl.leadingAnchor.constraint(equalTo: chooseLanguageLbl.leadingAnchor),
             
-            devLinksCV.leadingAnchor.constraint(equalTo: languagesCV.leadingAnchor),
+            devLinksCV.leadingAnchor.constraint(equalTo: contactDevLbl.trailingAnchor, constant: 32),
             devLinksCV.trailingAnchor.constraint(equalTo: languagesCV.trailingAnchor),
             devLinksCV.heightAnchor.constraint(equalTo: languagesCV.heightAnchor, multiplier: 0.8),
             devLinksCV.topAnchor.constraint(equalTo: languagesCV.bottomAnchor, constant: 16),
             
-            contactDevLbl.leadingAnchor.constraint(equalTo: chooseLanguageLbl.leadingAnchor),
+            languagesCV.leadingAnchor.constraint(equalTo: devLinksCV.leadingAnchor),
+            
             contactDevLbl.centerYAnchor.constraint(equalTo: devLinksCV.centerYAnchor),
             
             creditsBtn.leadingAnchor.constraint(equalTo: contactDevLbl.leadingAnchor),
@@ -214,6 +216,9 @@ extension SettingsViewController: UICollectionViewDataSource {
 extension SettingsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.tag == 1 {
+            guard selectedLangIndex != indexPath.row else {
+                return
+            }
             visualizeSelectedLang(false)
             selectedLangIndex = indexPath.row
             visualizeSelectedLang(true)
