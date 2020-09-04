@@ -89,6 +89,59 @@ extension UIView {
     }
 }
 
+protocol OpenKeyDelegate: class {
+    var firstStringVector: (CGFloat, CGFloat) { get }
+    var secondStringVector: (CGFloat, CGFloat) { get }
+    
+    func handleFirstStringSwipe()
+    func handleSecondStringSwipe()
+}
+
+class OpenKey: UIView {
+    // MARK:- Delegate
+    var delegate: OpenKeyDelegate!
+    private var start: CGFloat?
+    private let minDistance: CGFloat = 15.0
+    
+    
+    // MARK:- Touches
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let point = touches.first?.location(in: self) else {
+            return
+        }
+        start = point.y
+        super.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first, let start = self.start else {
+            self.start = nil
+            return
+        }
+        let location = touch.location(in: self)
+        let dy = abs(location.y - start)
+        
+        print("first \(delegate.firstStringVector)")
+        print("second \(delegate.secondStringVector)")
+        if dy > minDistance {
+            if start <= delegate.firstStringVector.0 && location.y >= delegate.firstStringVector.1 {
+                delegate.handleFirstStringSwipe()
+            }
+            if start <= delegate.secondStringVector.0 && location.y >= delegate.secondStringVector.1 {
+                delegate.handleSecondStringSwipe()
+            }
+        
+            if start >= delegate.secondStringVector.1 && location.y <= delegate.secondStringVector.0 {
+                delegate.handleSecondStringSwipe()
+            }
+            if start >= delegate.firstStringVector.1 && location.y <= delegate.firstStringVector.0 {
+                delegate.handleFirstStringSwipe()
+            }
+        }
+        super.touchesEnded(touches, with: event)
+    }
+}
+
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)

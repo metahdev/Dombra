@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DombraViewController: UIViewController {
+class DombraViewController: UIViewController, OpenKeyDelegate {
     // MARK:- Properties
     weak var main: MainVCProtocol!
     private lazy var keysCVBackground: UIImageView = {
@@ -55,9 +55,10 @@ class DombraViewController: UIViewController {
     private lazy var dotsCV: UICollectionView = {
         return turnToKeyCV(vc: self, tag: 5, CellClass: DotCollectionViewCell.self, direction: .horizontal, spacing: 4)
     }()
-    private lazy var openKeyView: UIView = {
-        let view = UIView()
+    private lazy var openKey: OpenKey = {
+        let view = OpenKey()
         view.backgroundColor = .clear
+        view.delegate = self
         return view
     }()
 
@@ -114,7 +115,8 @@ class DombraViewController: UIViewController {
         v.backgroundColor = Content.highlightColor
         return v
     }()
-
+    lazy var firstStringVector = (firstString.frame.origin.y, firstString.frame.origin.y + firstString.frame.height)
+    lazy var secondStringVector = (secondString.frame.origin.y, secondString.frame.origin.y + secondString.frame.height)
     
     private var icons = ["settings", "question"]
 
@@ -156,16 +158,7 @@ class DombraViewController: UIViewController {
     
     private func addGesturesToOpenKey() {
         let touch = UITapGestureRecognizer(target: self, action: #selector(playStringIndividually(recognizer:)))
-        
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(playBothStrings))
-        downSwipe.direction = .down
-        
-        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(playBothStrings))
-        upSwipe.direction = .up
-
-        openKeyView.addGestureRecognizer(touch)
-        openKeyView.addGestureRecognizer(downSwipe)
-        openKeyView.addGestureRecognizer(upSwipe)
+        openKey.addGestureRecognizer(touch)
     }
 
 
@@ -250,12 +243,12 @@ class DombraViewController: UIViewController {
         AudioPlayer.metronomeAudioPlayer.stop()
     }
 
-
+    
     // MARK:- Strings
     @objc
     private func playStringIndividually(recognizer: UITapGestureRecognizer) {
-        let point = recognizer.location(in: openKeyView)
-        let height = openKeyView.frame.height
+        let point = recognizer.location(in: openKey)
+        let height = openKey.frame.height
         
         if point.y < height * 0.5 {
             firstStringDragged(0)
@@ -267,7 +260,7 @@ class DombraViewController: UIViewController {
     }
 
     @objc
-    private func playBothStrings(swipe: UISwipeGestureRecognizer) {
+    private func playBothStrings() {
         firstStringDragged(0)
         animateHighlighting(viewToHighlight: firstOpenKeyHighlight, keysCV: firstKeysCV)
         animateHighlighting(viewToHighlight: secondOpenKeyHighlight, keysCV: secondKeysCV)
@@ -389,12 +382,26 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 
+extension DombraViewController {
+    // MARK:- Touches handling
+    func handleFirstStringSwipe() {
+        firstStringDragged(0)
+        animateHighlighting(viewToHighlight: firstOpenKeyHighlight, keysCV: firstKeysCV)
+    }
+    
+    func handleSecondStringSwipe() {
+        secondStringDragged(0)
+        animateHighlighting(viewToHighlight: secondOpenKeyHighlight, keysCV: secondKeysCV)
+    }
+}
+
+
 // MARK:- Layout extension
 extension DombraViewController {
     private func addSubviews() {
         view.addSubview(keysCVBackground)
 
-        view.addSubview(openKeyView)
+        view.addSubview(openKey)
         view.addSubview(firstOpenKeyHighlight)
         view.addSubview(firstKeysCV)
         view.addSubview(firstNotesCV)
@@ -434,33 +441,33 @@ extension DombraViewController {
             keysCVBackground.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             keysCVBackground.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
 
-            openKeyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            openKeyView.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
-            openKeyView.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
-            openKeyView.widthAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
+            openKey.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            openKey.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
+            openKey.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
+            openKey.widthAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
             
-            firstOpenKeyHighlight.leadingAnchor.constraint(equalTo: openKeyView.leadingAnchor),
-            firstOpenKeyHighlight.trailingAnchor.constraint(equalTo: openKeyView.trailingAnchor),
-            firstOpenKeyHighlight.topAnchor.constraint(equalTo: openKeyView.topAnchor),
-            firstOpenKeyHighlight.heightAnchor.constraint(equalTo: openKeyView.heightAnchor, multiplier: 0.5),
+            firstOpenKeyHighlight.leadingAnchor.constraint(equalTo: openKey.leadingAnchor),
+            firstOpenKeyHighlight.trailingAnchor.constraint(equalTo: openKey.trailingAnchor),
+            firstOpenKeyHighlight.topAnchor.constraint(equalTo: openKey.topAnchor),
+            firstOpenKeyHighlight.heightAnchor.constraint(equalTo: openKey.heightAnchor, multiplier: 0.5),
             
             secondOpenKeyHighlight.leadingAnchor.constraint(equalTo: firstOpenKeyHighlight.leadingAnchor),
             secondOpenKeyHighlight.trailingAnchor.constraint(equalTo: firstOpenKeyHighlight.trailingAnchor),
             secondOpenKeyHighlight.topAnchor.constraint(equalTo: firstOpenKeyHighlight.bottomAnchor),
-            secondOpenKeyHighlight.bottomAnchor.constraint(equalTo: openKeyView.bottomAnchor),
+            secondOpenKeyHighlight.bottomAnchor.constraint(equalTo: openKey.bottomAnchor),
 
-            firstNotesCV.leadingAnchor.constraint(equalTo: openKeyView.trailingAnchor),
+            firstNotesCV.leadingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstNotesCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             firstNotesCV.bottomAnchor.constraint(equalTo: keysCVBackground.topAnchor),
             firstNotesCV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
 
             firstOpenNoteLbl.centerYAnchor.constraint(equalTo: firstNotesCV.centerYAnchor),
-            firstOpenNoteLbl.centerXAnchor.constraint(equalTo: openKeyView.centerXAnchor),
+            firstOpenNoteLbl.centerXAnchor.constraint(equalTo: openKey.centerXAnchor),
 
-            firstKeysCV.leadingAnchor.constraint(equalTo: openKeyView.trailingAnchor),
+            firstKeysCV.leadingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstKeysCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             firstKeysCV.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
-            firstKeysCV.heightAnchor.constraint(equalTo: openKeyView.heightAnchor, multiplier: 0.5),
+            firstKeysCV.heightAnchor.constraint(equalTo: openKey.heightAnchor, multiplier: 0.5),
 
             secondKeysCV.leadingAnchor.constraint(equalTo: firstKeysCV.leadingAnchor),
             secondKeysCV.trailingAnchor.constraint(equalTo: firstKeysCV.trailingAnchor),
@@ -473,7 +480,7 @@ extension DombraViewController {
             secondNotesCV.heightAnchor.constraint(equalTo: firstNotesCV.heightAnchor),
 
             secondOpenNoteLbl.centerYAnchor.constraint(equalTo: secondNotesCV.centerYAnchor),
-            secondOpenNoteLbl.centerXAnchor.constraint(equalTo: openKeyView.centerXAnchor),
+            secondOpenNoteLbl.centerXAnchor.constraint(equalTo: openKey.centerXAnchor),
 
             dotsCV.leadingAnchor.constraint(equalTo: secondKeysCV.leadingAnchor),
             dotsCV.trailingAnchor.constraint(equalTo: secondKeysCV.trailingAnchor),
