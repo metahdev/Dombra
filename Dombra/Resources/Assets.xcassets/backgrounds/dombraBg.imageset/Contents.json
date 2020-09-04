@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dombraBg1.jpg",
+      "filename" : "wood.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "wood.jpg",
+      "filename" : "wood2.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dombraBg3.jpg",
+      "filename" : "wood3.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

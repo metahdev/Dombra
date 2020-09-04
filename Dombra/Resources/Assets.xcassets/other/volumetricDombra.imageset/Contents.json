@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "volumetricDombra-1.png",
+      "filename" : "dombra1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "volumetricDombra.png",
+      "filename" : "dombra.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "vd.png",
+      "filename" : "dombra3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -13,7 +13,7 @@ import GoogleMobileAds
 // ca-app-pub-3940256099942544/2934735716 - test banner id
 #warning("TODO")
 /*
- 1. Audio reusing, IPad image quality
+ 1. Audio reusing, contacts images resolutions fix + finish the swiping algorithm
  2. Content final
  3. Public branch upload
  4. Google Ads(private)
