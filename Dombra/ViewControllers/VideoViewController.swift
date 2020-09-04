@@ -45,8 +45,8 @@ class VideoViewController: UIViewController, ChildVC {
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .clear
+        
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(closeBtn)

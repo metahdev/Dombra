@@ -42,7 +42,7 @@ class SettingsViewController: UIViewController, ChildVC {
     }()
     private lazy var creditsBtn: UIButton = {
         let btn = UIButton()
-        btn.configureButton(with: nil, target: self, and: #selector(showCredits))
+        btn.configureButton(with: nil, target: self, and: #selector(toggleCredits))
         btn.setupSettingsAppearence()
         btn.setTitle(Content.creditsTitle, for: .normal)
         btn.titleLabel!.font = UIFont(name: "Avenir-Heavy", size: view.frame.height * 0.045)
@@ -151,10 +151,6 @@ class SettingsViewController: UIViewController, ChildVC {
     }
     
     @objc
-    private func showCredits() {
-        toggleCredits()
-    }
-    
     private func toggleCredits() {
         inCredits = !inCredits
         
@@ -194,13 +190,15 @@ extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! ImageCollectionViewCell
-        if collectionView.tag == 1 {
-            cell.imageName = Content.languages[indexPath.row]
-            if Content.language.rawValue == Content.languages[indexPath.row] {
-                selectedLangIndex = indexPath.row
-            }
-        } else {
+        
+        guard collectionView.tag == 1 else {
             cell.imageName = Content.contacts[indexPath.row].name
+            return cell
+        }
+        
+        cell.imageName = Content.languages[indexPath.row]
+        if Content.language.rawValue == Content.languages[indexPath.row] {
+            selectedLangIndex = indexPath.row
         }
         return cell
     }
@@ -220,7 +218,9 @@ extension SettingsViewController: UICollectionViewDelegate {
                 return
             }
             visualizeSelectedLang(false)
+            
             selectedLangIndex = indexPath.row
+            
             visualizeSelectedLang(true)
             changeLanguage()
         } else {

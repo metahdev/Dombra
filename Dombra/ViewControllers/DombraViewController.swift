@@ -224,10 +224,12 @@ class DombraViewController: UIViewController {
     private func setCurrentTempo(increase: Bool) {
         var dictArr = Array(Content.tempos)
         dictArr.sort{ $0.1 > $1.1 }
+        
         var keys = [String]()
         for (key, _) in dictArr {
             keys.append(key)
         }
+        
         if increase {
             tempoIndex += 1
             plusButton.isEnabled = (tempoIndex != keys.count - 1)
@@ -241,8 +243,8 @@ class DombraViewController: UIViewController {
     private func stopMetronome() {
         isMetronomeTurnedOn = false
         isRight = false
-        playButton.setBackgroundImage(UIImage(named: "play"), for: .normal)
         
+        playButton.setBackgroundImage(UIImage(named: "play"), for: .normal)
         animationTimer?.invalidate()
         containerView.clearAllDots()
         AudioPlayer.metronomeAudioPlayer.stop()
@@ -306,7 +308,7 @@ class DombraViewController: UIViewController {
 extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag < 6 {
-            return 19
+            return Content.firstNotes.count
         } else {
             return icons.count
         }
@@ -387,8 +389,8 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 
+// MARK:- Layout extension
 extension DombraViewController {
-    // MARK:- Layout
     private func addSubviews() {
         view.addSubview(keysCVBackground)
 
@@ -422,7 +424,9 @@ extension DombraViewController {
     private func setAutoresizingToFalse() {
         _ = self.view.subviews.map { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
-
+    
+    
+    // MARK:- Constraints
     private func activateConstraints() {
         NSLayoutConstraint.activate([
             keysCVBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),

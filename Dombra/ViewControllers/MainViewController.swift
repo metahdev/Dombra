@@ -13,7 +13,7 @@ import GoogleMobileAds
 // ca-app-pub-3940256099942544/2934735716 - test banner id
 #warning("TODO")
 /*
- 1. refactoring(code and audio reusing, IPad image quality)
+ 1. Audio reusing, IPad image quality
  2. Content final
  3. Public branch upload
  4. Google Ads(private)
@@ -110,14 +110,7 @@ class MainViewController: UIViewController, MainVCProtocol {
 
 
 // MARK:- BannerAd Delegate
-extension MainViewController: GADBannerViewDelegate {
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("ad recieved")
-    }
-    
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-    }
-}
+extension MainViewController: GADBannerViewDelegate {}
 
 
 // MARK:- MainVCProtocol Methods
@@ -131,32 +124,30 @@ extension MainViewController {
     }
     
     private func showSelectedVC() {
-        addBlur()
-        setProperties()
+        initBlur()
+        view.addSubview(visualEffectView)
+        
+        setupChild()
+        initChildVCConstraints()
+        setupAlphaValues(0)
         NSLayoutConstraint.activate(tempConstraints)
         animWithValue(1.0, completion: {})
     }
     
-    private func addBlur() {
+    private func initBlur() {
         visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         
         visualEffectView.frame = view.frame
-        visualEffectView.layer.zPosition = 2
         visualEffectView.isUserInteractionEnabled = false
-
-        view.addSubview(visualEffectView)
     }
     
-    private func setProperties() {
+    private func setupChild() {
         (currentVC as! ChildVC).main = self
         currentVC.view.translatesAutoresizingMaskIntoConstraints = false
-        currentVC.view.layer.zPosition = 3
         
         self.view.addSubview(currentVC.view)
         self.addChild(currentVC)
         currentVC.didMove(toParent: parent)
-        initChildVCConstraints()
-        setupAlphaValues(0)
     }
     
     private func initChildVCConstraints() {
