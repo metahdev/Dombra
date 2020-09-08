@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "tele.png",
+      "filename" : "telegram1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tele2.png",
+      "filename" : "telegram2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

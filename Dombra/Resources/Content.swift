@@ -39,10 +39,10 @@ struct Content {
     static let languages = ["kazakh", "english", "russian"]
     
     static let contacts = [
-        Contact(name: "github", link: "https://github.com/metahdev"),
+        Contact(name: "insta", link: "https://instagram.com/metahdev"),
         Contact(name: "gmail", link: "mailto:metahdev@gmail.com"),
         Contact(name: "telegram", link: "https://t.me/metahdev"),
-        Contact(name: "insta", link: "https://instagram.com/metahdev"),
+        Contact(name: "github", link: "https://github.com/metahdev"),
         Contact(name: "twitter", link: "https://twitter.com/metahdev")
     ]
 

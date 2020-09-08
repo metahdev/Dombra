@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86C4B1780047FFD756B3B28E /* Pods_Dombra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B00F2299A4720033E0252D3 /* Pods_Dombra.framework */; };
-		D1175F9C246876150082EB29 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1175F9B246876150082EB29 /* CollectionViewCells.swift */; };
 		D1490C8B246AB45200DB0DE0 /* beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1490C8A246AB45200DB0DE0 /* beat.mp3 */; };
-		D171F82F24F94162007D5B1C /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171F82E24F94162007D5B1C /* LoadingOverlay.swift */; };
 		D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765D240BB96B007A4018 /* AppDelegate.swift */; };
 		D17A7660240BB96B007A4018 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A765F240BB96B007A4018 /* SceneDelegate.swift */; };
 		D17A7662240BB96B007A4018 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17A7661240BB96B007A4018 /* MainViewController.swift */; };
@@ -61,10 +59,13 @@
 		D17BBC1B24645FBB00CFC053 /* d7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF224645FBB00CFC053 /* d7.m4a */; };
 		D17BBC1C24645FBB00CFC053 /* u9.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF324645FBB00CFC053 /* u9.m4a */; };
 		D17BBC1D24645FBB00CFC053 /* u8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D17BBBF424645FBB00CFC053 /* u8.m4a */; };
-		D192FCF224B3108300C5660E /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF124B3108300C5660E /* ContainerView.swift */; };
 		D192FCF424B316F400C5660E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF324B316F400C5660E /* VideoViewController.swift */; };
 		D192FCF624B380E100C5660E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192FCF524B380E100C5660E /* SettingsViewController.swift */; };
 		D1AEC72C240F875A00FA27D6 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEC72B240F875A00FA27D6 /* Content.swift */; };
+		D1C94A6C2508041D00E28CCF /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C94A682508041C00E28CCF /* CollectionViewCells.swift */; };
+		D1C94A6D2508041D00E28CCF /* OpenKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C94A692508041C00E28CCF /* OpenKey.swift */; };
+		D1C94A6E2508041D00E28CCF /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C94A6A2508041D00E28CCF /* ContainerView.swift */; };
+		D1C94A6F2508041D00E28CCF /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C94A6B2508041D00E28CCF /* LoadingOverlay.swift */; };
 		D1FB93C724BE606300110B12 /* DombraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB93C624BE606300110B12 /* DombraViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,11 +73,9 @@
 		2B00F2299A4720033E0252D3 /* Pods_Dombra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dombra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6BAD17B170030EB9301F07 /* Pods-Dombra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.debug.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.debug.xcconfig"; sourceTree = "<group>"; };
 		4C36599C69B6E4573B7E53A2 /* Pods-Dombra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dombra.release.xcconfig"; path = "Target Support Files/Pods-Dombra/Pods-Dombra.release.xcconfig"; sourceTree = "<group>"; };
-		D1175F9B246876150082EB29 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
 		D1490C8A246AB45200DB0DE0 /* beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beat.mp3; sourceTree = "<group>"; };
 		D15C9BE02415929D00C4E99F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		D15C9BE52415939F00C4E99F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		D171F82E24F94162007D5B1C /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		D17A765A240BB96B007A4018 /* Dombra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dombra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17A765D240BB96B007A4018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17A765F240BB96B007A4018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,10 +128,13 @@
 		D17BBBF224645FBB00CFC053 /* d7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = d7.m4a; sourceTree = "<group>"; };
 		D17BBBF324645FBB00CFC053 /* u9.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u9.m4a; sourceTree = "<group>"; };
 		D17BBBF424645FBB00CFC053 /* u8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = u8.m4a; sourceTree = "<group>"; };
-		D192FCF124B3108300C5660E /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		D192FCF324B316F400C5660E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D192FCF524B380E100C5660E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D1AEC72B240F875A00FA27D6 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		D1C94A682508041C00E28CCF /* CollectionViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCells.swift; path = ../CollectionViewCells.swift; sourceTree = "<group>"; };
+		D1C94A692508041C00E28CCF /* OpenKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenKey.swift; sourceTree = "<group>"; };
+		D1C94A6A2508041D00E28CCF /* ContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerView.swift; path = ../ContainerView.swift; sourceTree = "<group>"; };
+		D1C94A6B2508041D00E28CCF /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingOverlay.swift; path = ../LoadingOverlay.swift; sourceTree = "<group>"; };
 		D1FB93C624BE606300110B12 /* DombraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DombraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,12 +205,10 @@
 		D17A767D240C24D0007A4018 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D1C94A702508042800E28CCF /* Custom Classes */,
 				D17A765D240BB96B007A4018 /* AppDelegate.swift */,
 				D17A765F240BB96B007A4018 /* SceneDelegate.swift */,
 				D17A767A240C2164007A4018 /* Extensions.swift */,
-				D1175F9B246876150082EB29 /* CollectionViewCells.swift */,
-				D192FCF124B3108300C5660E /* ContainerView.swift */,
-				D171F82E24F94162007D5B1C /* LoadingOverlay.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -288,6 +288,17 @@
 				D17A767E240C24EF007A4018 /* Animator.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		D1C94A702508042800E28CCF /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D1C94A682508041C00E28CCF /* CollectionViewCells.swift */,
+				D1C94A6A2508041D00E28CCF /* ContainerView.swift */,
+				D1C94A6B2508041D00E28CCF /* LoadingOverlay.swift */,
+				D1C94A692508041C00E28CCF /* OpenKey.swift */,
+			);
+			path = "Custom Classes";
 			sourceTree = "<group>";
 		};
 		E7ABB8A528BCE6667893326C /* Pods */ = {
@@ -455,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1175F9C246876150082EB29 /* CollectionViewCells.swift in Sources */,
+				D1C94A6D2508041D00E28CCF /* OpenKey.swift in Sources */,
 				D17A7679240C1D70007A4018 /* AudioPlayer.swift in Sources */,
 				D192FCF424B316F400C5660E /* VideoViewController.swift in Sources */,
 				D17A7662240BB96B007A4018 /* MainViewController.swift in Sources */,
@@ -463,11 +474,12 @@
 				D1AEC72C240F875A00FA27D6 /* Content.swift in Sources */,
 				D17A765E240BB96B007A4018 /* AppDelegate.swift in Sources */,
 				D17A7660240BB96B007A4018 /* SceneDelegate.swift in Sources */,
+				D1C94A6F2508041D00E28CCF /* LoadingOverlay.swift in Sources */,
 				D17A767F240C24EF007A4018 /* Animator.swift in Sources */,
 				D17A7675240BE9AC007A4018 /* LoadingViewController.swift in Sources */,
-				D192FCF224B3108300C5660E /* ContainerView.swift in Sources */,
-				D171F82F24F94162007D5B1C /* LoadingOverlay.swift in Sources */,
 				D17A767B240C2164007A4018 /* Extensions.swift in Sources */,
+				D1C94A6C2508041D00E28CCF /* CollectionViewCells.swift in Sources */,
+				D1C94A6E2508041D00E28CCF /* ContainerView.swift in Sources */,
 				D192FCF624B380E100C5660E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

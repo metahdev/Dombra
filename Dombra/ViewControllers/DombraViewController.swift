@@ -11,6 +11,13 @@ import UIKit
 class DombraViewController: UIViewController, OpenKeyDelegate {
     // MARK:- Properties
     weak var main: MainVCProtocol!
+    
+    lazy var firstStringVector = [firstStringOrigin, firstStringOrigin + firstString.frame.height]
+    lazy var secondStringVector = [secondStringOrigin, secondStringOrigin + secondString.frame.height]
+    
+    private lazy var firstStringOrigin = firstString.frame.origin.y
+    private lazy var secondStringOrigin = secondString.frame.origin.y
+    
     private lazy var keysCVBackground: UIImageView = {
         let iv = UIImageView()
         let image = UIImage(named: "dombraBg")
@@ -115,8 +122,6 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
         v.backgroundColor = Content.highlightColor
         return v
     }()
-    lazy var firstStringVector = (firstString.frame.origin.y, firstString.frame.origin.y + firstString.frame.height)
-    lazy var secondStringVector = (secondString.frame.origin.y, secondString.frame.origin.y + secondString.frame.height)
     
     private var icons = ["settings", "question"]
 
@@ -406,13 +411,11 @@ extension DombraViewController {
         view.addSubview(firstKeysCV)
         view.addSubview(firstNotesCV)
         view.addSubview(firstOpenNoteLbl)
-        view.addSubview(firstString)
 
         view.addSubview(secondOpenKeyHighlight)
         view.addSubview(secondKeysCV)
         view.addSubview(secondNotesCV)
         view.addSubview(secondOpenNoteLbl)
-        view.addSubview(secondString)
 
         view.addSubview(dotsCV)
 
@@ -426,10 +429,14 @@ extension DombraViewController {
         view.addSubview(minusButton)
         
         view.addSubview(iconsCV)
+        
+        openKey.addSubview(firstString)
+        openKey.addSubview(secondString)
     }
 
     private func setAutoresizingToFalse() {
         _ = self.view.subviews.map { $0.translatesAutoresizingMaskIntoConstraints = false }
+        _ = openKey.subviews.map { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
     
