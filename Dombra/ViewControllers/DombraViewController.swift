@@ -449,19 +449,18 @@ extension DombraViewController {
             keysCVBackground.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
 
             openKey.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            openKey.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
-            openKey.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
+            openKey.topAnchor.constraint(equalTo: view.topAnchor),
             openKey.widthAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
             
             firstOpenKeyHighlight.leadingAnchor.constraint(equalTo: openKey.leadingAnchor),
             firstOpenKeyHighlight.trailingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstOpenKeyHighlight.topAnchor.constraint(equalTo: openKey.topAnchor),
-            firstOpenKeyHighlight.heightAnchor.constraint(equalTo: openKey.heightAnchor, multiplier: 0.5),
+            firstOpenKeyHighlight.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor, multiplier: 0.5),
             
             secondOpenKeyHighlight.leadingAnchor.constraint(equalTo: firstOpenKeyHighlight.leadingAnchor),
             secondOpenKeyHighlight.trailingAnchor.constraint(equalTo: firstOpenKeyHighlight.trailingAnchor),
             secondOpenKeyHighlight.topAnchor.constraint(equalTo: firstOpenKeyHighlight.bottomAnchor),
-            secondOpenKeyHighlight.bottomAnchor.constraint(equalTo: openKey.bottomAnchor),
+            secondOpenKeyHighlight.bottomAnchor.constraint(equalTo: keysCVBackground.bottomAnchor),
 
             firstNotesCV.leadingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstNotesCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -474,7 +473,7 @@ extension DombraViewController {
             firstKeysCV.leadingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstKeysCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             firstKeysCV.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
-            firstKeysCV.heightAnchor.constraint(equalTo: openKey.heightAnchor, multiplier: 0.5),
+            firstKeysCV.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor, multiplier: 0.5),
 
             secondKeysCV.leadingAnchor.constraint(equalTo: firstKeysCV.leadingAnchor),
             secondKeysCV.trailingAnchor.constraint(equalTo: firstKeysCV.trailingAnchor),
@@ -488,6 +487,8 @@ extension DombraViewController {
 
             secondOpenNoteLbl.centerYAnchor.constraint(equalTo: secondNotesCV.centerYAnchor),
             secondOpenNoteLbl.centerXAnchor.constraint(equalTo: openKey.centerXAnchor),
+            
+            openKey.bottomAnchor.constraint(equalTo: secondOpenNoteLbl.bottomAnchor),
 
             dotsCV.leadingAnchor.constraint(equalTo: secondKeysCV.leadingAnchor),
             dotsCV.trailingAnchor.constraint(equalTo: secondKeysCV.trailingAnchor),

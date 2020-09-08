@@ -42,22 +42,24 @@ class OpenKey: UIView {
         let dy = abs(finalY! - start)
         
         if dy > minDistance {
-            checkCoordinates(ofFirstString: true, checkEnd: false)
-            checkCoordinates(ofFirstString: true, checkEnd: true)
-            checkCoordinates(ofFirstString: false, checkEnd: false)
-            checkCoordinates(ofFirstString: false, checkEnd: true)
+            checkForDownSwipe(ofFirstString: true)
+            checkForDownSwipe(ofFirstString: false)
+            checkForUpperSwipe(ofFirstString: true)
+            checkForUpperSwipe(ofFirstString: false)
         }
         super.touchesEnded(touches, with: event)
     }
     
-    private func checkCoordinates(ofFirstString: Bool, checkEnd: Bool) {
+    private func checkForDownSwipe(ofFirstString: Bool) {
         let vector = ofFirstString ? delegate.firstStringVector : delegate.secondStringVector
-        var begin = 0
-        var end = 1
-        if checkEnd {
-            swap(&begin, &end)
+        if start! <= vector[0] && finalY! >= vector[1] {
+            ofFirstString ? delegate.handleFirstStringSwipe() : delegate.handleSecondStringSwipe()
         }
-        if start! <= vector[begin] && finalY! >= vector[end] {
+    }
+    
+    private func checkForUpperSwipe(ofFirstString: Bool) {
+        let vector = ofFirstString ? delegate.firstStringVector : delegate.secondStringVector
+        if start! >= vector[1] && finalY! <= vector[0] {
             ofFirstString ? delegate.handleFirstStringSwipe() : delegate.handleSecondStringSwipe()
         }
     }

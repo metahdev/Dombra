@@ -113,7 +113,15 @@ class MainViewController: UIViewController, MainVCProtocol {
 extension MainViewController: GADBannerViewDelegate {}
 
 
-// MARK:- MainVCProtocol Methods
+// MARK:- System Gestures
+extension MainViewController {
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        return UIRectEdge.all
+    }
+}
+
+
+// MARK:- MainVCProtocol methods
 extension MainViewController {
     func showVideoVC() {
         currentVC = VideoViewController()
@@ -174,6 +182,7 @@ extension MainViewController {
 }
 
 extension MainViewController {
+    // MARK:- MainVCProtocol navigation
     func closeChildView() {
         dombraVC.updateData() 
         animWithValue(0, completion: {
