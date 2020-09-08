@@ -75,6 +75,8 @@ struct Content {
     static var contactDev: String {
         return contactDevTitles[language]!
     }
+    static let contactDevTitles: [Language: String] = [.Kazakh: "Әзірлеушімен байланысу:", .English: "Contact the developer:", .Russian: "Связаться с разработчиком:"]
+
     static var creditsTitle: String {
         return creditsTitles[language]!
     }
@@ -94,7 +96,6 @@ struct Content {
     
     private static let settingsTitles: [Language: String] = [.Kazakh: "Параметрлер", .English: "Settings", .Russian: "Настройки"]
     private static let languageInstructions: [Language: String] = [.Kazakh: "Тілді таңдаңыз:", .English: "Choose a language:", .Russian: "Выберите язык:"]
-    private static let contactDevTitles: [Language: String] = [.Kazakh: "Әзірлеушімен байланысу:", .English: "Contact the developer:", .Russian: "Связаться с разработчиком:"]
     private static let creditsTitles: [Language: String] = [.Kazakh: "Бағдарлама туралы", .English: "About the app", .Russian: "О приложении"]
     private static let creditsVariety: [Language: String] = [.Kazakh: creditsKazakh, .English: creditsEnglish, .Russian: creditsRussian]
     private static let waitingMessages: [Language: String] = [.Kazakh: "Күте тұрыңыз...", .English: "Please wait...", .Russian: "Пожалуйста подождите..."]

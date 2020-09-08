@@ -34,7 +34,7 @@ class SettingsViewController: UIViewController, ChildVC {
     }()
     private lazy var contactDevLbl: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.contactDev, font: view.frame.width * 0.022)
+        lbl.turnToStateLabel(Content.contactDevTitles[.Russian]!, font: view.frame.width * 0.022)
         return lbl
     }()
     private lazy var devLinksCV: UICollectionView = {
@@ -89,6 +89,11 @@ class SettingsViewController: UIViewController, ChildVC {
         activateConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         visualizeSelectedLang(true)
@@ -115,7 +120,7 @@ class SettingsViewController: UIViewController, ChildVC {
                         
             contactDevLbl.leadingAnchor.constraint(equalTo: chooseLanguageLbl.leadingAnchor),
             
-            devLinksCV.leadingAnchor.constraint(equalTo: contactDevLbl.trailingAnchor, constant: 32),
+            devLinksCV.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: contactDevLbl.intrinsicContentSize.width + 32),
             devLinksCV.trailingAnchor.constraint(equalTo: languagesCV.trailingAnchor),
             devLinksCV.heightAnchor.constraint(equalTo: languagesCV.heightAnchor, multiplier: 0.8),
             devLinksCV.topAnchor.constraint(equalTo: languagesCV.bottomAnchor, constant: 16),
