@@ -18,7 +18,7 @@ class VideoViewController: UIViewController, ChildVC {
     weak var main: MainVCProtocol!
     private lazy var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.turnToStateLabel(Content.infoTitle, font: view.frame.height * 0.06)
+        lbl.turnToStateLabel(Content.infoTitle, font: view.frame.height * 0.07)
         return lbl
     }()
     private lazy var descriptionLabel: UILabel = {
