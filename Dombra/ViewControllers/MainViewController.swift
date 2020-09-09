@@ -7,17 +7,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
-
-
-// ca-app-pub-3940256099942544/2934735716 - test banner id
-#warning("TODO")
-/*
- 1. Content final
- 2. Public branch upload
- 3. Google Ads(private)
- 4. Write down future updates' plans(private)
- */
 
 protocol MainVCProtocol: class {
     func showVideoVC()
@@ -28,15 +17,6 @@ protocol MainVCProtocol: class {
 class MainViewController: UIViewController, MainVCProtocol {
     // MARK:- Properties
     private lazy var backgroundImageView = UIImageView()
-    private lazy var bannerView: GADBannerView = {
-        let v = GADBannerView()
-        v.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        v.delegate = self
-        v.rootViewController = self
-        v.backgroundColor = .clear
-        v.layer.zPosition = 4
-        return v
-    }()
     private lazy var dombraVC: DombraViewController = {
         let vc = DombraViewController()
         vc.main = self 
@@ -58,7 +38,6 @@ class MainViewController: UIViewController, MainVCProtocol {
 
         backgroundImageView.turnToBackground(view, image: "wood")
         
-        addSubviews()
         addDombraVC()
         setAutoresizingToFalse()
         activateConstraints()
@@ -69,21 +48,10 @@ class MainViewController: UIViewController, MainVCProtocol {
         AudioPlayer.backgroundAudioPlayer.stop()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.async {
-            self.bannerView.load(GADRequest())
-        }
-    }
-    
     private func addDombraVC() {
         self.view.addSubview(dombraVC.view)
         self.addChild(dombraVC)
         dombraVC.didMove(toParent: parent)
-    }
-    
-    private func addSubviews() {
-        view.addSubview(bannerView)
     }
     
     private func setAutoresizingToFalse() {
@@ -97,19 +65,10 @@ class MainViewController: UIViewController, MainVCProtocol {
             dombraVC.view.topAnchor.constraint(equalTo: view.topAnchor),
             dombraVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
             dombraVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dombraVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            bannerView.topAnchor.constraint(equalTo: dombraVC.view.bottomAnchor),
-            bannerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dombraVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }
-
-
-// MARK:- BannerAd Delegate
-extension MainViewController: GADBannerViewDelegate {}
 
 
 // MARK:- System Gestures
@@ -160,7 +119,7 @@ extension MainViewController {
     private func initChildVCConstraints() {
         tempConstraints = [
             currentVC.view.topAnchor.constraint(equalTo: view.topAnchor),
-            currentVC.view.bottomAnchor.constraint(equalTo: bannerView.topAnchor),
+            currentVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             currentVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             currentVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
