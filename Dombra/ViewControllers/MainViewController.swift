@@ -13,11 +13,10 @@ import GoogleMobileAds
 // ca-app-pub-3940256099942544/2934735716 - test banner id
 #warning("TODO")
 /*
- 1. try audio reusing
- 2. Content final
- 3. Public branch upload
- 4. Google Ads(private)
- 5. Write down future updates' plans(private)
+ 1. Content final
+ 2. Public branch upload
+ 3. Google Ads(private)
+ 4. Write down future updates' plans(private)
  */
 
 protocol MainVCProtocol: class {
