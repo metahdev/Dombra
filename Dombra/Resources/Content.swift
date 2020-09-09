@@ -21,7 +21,6 @@ struct Contact {
 
 struct Content {
     // MARK:- Constants
-    #warning("update version here")
     static let version = "Version: 1.0.0"
 
     static let animDuration = 1.0
