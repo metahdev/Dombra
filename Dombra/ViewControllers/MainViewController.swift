@@ -63,7 +63,7 @@ class MainViewController: UIViewController, MainVCProtocol {
     private func activateConstraints() {
         NSLayoutConstraint.activate([
             dombraVC.view.topAnchor.constraint(equalTo: view.topAnchor),
-            dombraVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
+            dombraVC.view.heightAnchor.constraint(equalTo: view.heightAnchor),
             dombraVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dombraVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])

@@ -69,7 +69,7 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
         view.layer.zPosition = 1
         return view
     }()
-
+    
     private lazy var keysHidingSwitch: UISwitch = {
         let s = UISwitch()
         s.isOn = false
@@ -106,9 +106,9 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
         btn.isEnabled = false
         return btn
     }()
-
+    
     private lazy var iconsCV: UICollectionView = {
-        return turnToKeyCV(vc: self, tag: 6, CellClass: ImageCollectionViewCell.self, direction: .horizontal, spacing: 20)
+        return turnToKeyCV(vc: self, tag: 6, CellClass: ImageCollectionViewCell.self, direction: .vertical, spacing: 20)
     }()
     
     private lazy var firstOpenKeyHighlight: UIView = {
@@ -125,9 +125,9 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
     }()
     
     private var icons = ["question", "settings"]
-
+    
     private var animationTimer: Timer?
-
+    
     private var currentTempo = "Grave" {
         didSet {
             updateMetronomeText()
@@ -136,8 +136,8 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
     private var tempoIndex = 0
     private var isMetronomeTurnedOn = false
     private var isRight = false
-        
-
+    
+    
     // MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,16 +166,16 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
         let touch = UITapGestureRecognizer(target: self, action: #selector(playStringIndividually(recognizer:)))
         openKey.addGestureRecognizer(touch)
     }
-
-
+    
+    
     // MARK:- Switches
     @objc
     private func hideOrUnhideKeys() {
         firstKeysCV.reloadData()
         secondKeysCV.reloadData()
     }
-
-
+    
+    
     // MARK:- Metronome functionality
     @objc
     private func toggleMetronome() {
@@ -192,7 +192,7 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
     private func runMetronome() {
         animationTimer = Timer.scheduledTimer(timeInterval: Content.tempos[currentTempo]! * 0.5, target: self, selector: #selector(updateState), userInfo: nil, repeats: true)
     }
-
+    
     @objc
     private func updateState() {
         isRight = !isRight
@@ -205,14 +205,14 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
             containerView.fillLeftDot()
         }
     }
-
+    
     @objc
     private func increaseTempo() {
         minusButton.isEnabled = true
         stopMetronome()
         setCurrentTempo(increase: true)
     }
-
+    
     @objc
     private func decreaseTempo() {
         plusButton.isEnabled = true
@@ -248,7 +248,7 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
         containerView.clearAllDots()
         AudioPlayer.metronomeAudioPlayer.stop()
     }
-
+    
     
     // MARK:- Strings
     @objc
@@ -264,7 +264,7 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
             animateHighlighting(viewToHighlight: secondOpenKeyHighlight, keysCV: secondKeysCV)
         }
     }
-
+    
     @objc
     private func playBothStrings() {
         firstStringDragged(0)
@@ -280,17 +280,17 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
             viewToHighlight?.alpha = 0
         })
     }
-
+    
     private func firstStringDragged(_ index: Int) {
         AudioPlayer.playFirstStringNote(index)
         animateString(firstString)
     }
-
+    
     private func secondStringDragged(_ index: Int) {
         AudioPlayer.playSecondStringNote(index)
         animateString(secondString)
     }
-
+    
     private func animateString(_ string: UIImageView) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07
@@ -298,7 +298,7 @@ class DombraViewController: UIViewController, OpenKeyDelegate {
         animation.autoreverses = true
         animation.fromValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y + 1))
         animation.toValue = NSValue(cgPoint: CGPoint(x: string.center.x, y: string.center.y - 1))
-
+        
         string.layer.add(animation, forKey: "position")
     }
 }
@@ -312,7 +312,7 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return icons.count
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath)
         cell.backgroundColor = .clear
@@ -352,10 +352,10 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
         default: return
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? KeyCollectionViewCell
-    
+        
         let index = 19 - indexPath.row
         if collectionView.tag == 1 {
             firstStringDragged(index)
@@ -372,13 +372,16 @@ extension DombraViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView.tag < 6 {
             let width = (collectionView.frame.width / 19) - 4
             return CGSize(width: width, height: collectionView.frame.height)
         } else {
-            let side = collectionView.frame.height
+            var side = collectionView.frame.width
+            if collectionView.frame.width * 2 + 20 > collectionView.frame.height {
+                side = collectionView.frame.height / 2 - 10
+            }
             return CGSize(width: side, height: side)
         }
     }
@@ -403,23 +406,23 @@ extension DombraViewController {
 extension DombraViewController {
     private func addSubviews() {
         view.addSubview(keysCVBackground)
-
+        
         view.addSubview(openKey)
         view.addSubview(firstOpenKeyHighlight)
         view.addSubview(firstKeysCV)
         view.addSubview(firstNotesCV)
         view.addSubview(firstOpenNoteLbl)
-
+        
         view.addSubview(secondOpenKeyHighlight)
         view.addSubview(secondKeysCV)
         view.addSubview(secondNotesCV)
         view.addSubview(secondOpenNoteLbl)
-
+        
         view.addSubview(dotsCV)
-
+        
         view.addSubview(keysHidingSwitch)
         view.addSubview(keysStateLabel)
-
+        
         view.addSubview(metronomeLabel)
         view.addSubview(containerView)
         view.addSubview(playButton)
@@ -431,7 +434,7 @@ extension DombraViewController {
         openKey.addSubview(firstString)
         openKey.addSubview(secondString)
     }
-
+    
     private func setAutoresizingToFalse() {
         _ = self.view.subviews.map { $0.translatesAutoresizingMaskIntoConstraints = false }
         _ = openKey.subviews.map { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -444,74 +447,84 @@ extension DombraViewController {
             keysCVBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             keysCVBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             keysCVBackground.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.2),
-            keysCVBackground.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
-
+            keysCVBackground.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            
             openKey.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            openKey.topAnchor.constraint(equalTo: view.topAnchor),
             openKey.widthAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
             
             firstOpenKeyHighlight.leadingAnchor.constraint(equalTo: openKey.leadingAnchor),
             firstOpenKeyHighlight.trailingAnchor.constraint(equalTo: openKey.trailingAnchor),
-            firstOpenKeyHighlight.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
+            firstOpenKeyHighlight.topAnchor.constraint(equalTo: openKey.topAnchor),
             firstOpenKeyHighlight.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor, multiplier: 0.5),
             
             secondOpenKeyHighlight.leadingAnchor.constraint(equalTo: firstOpenKeyHighlight.leadingAnchor),
             secondOpenKeyHighlight.trailingAnchor.constraint(equalTo: firstOpenKeyHighlight.trailingAnchor),
             secondOpenKeyHighlight.topAnchor.constraint(equalTo: firstOpenKeyHighlight.bottomAnchor),
             secondOpenKeyHighlight.bottomAnchor.constraint(equalTo: keysCVBackground.bottomAnchor),
-
+            
             firstNotesCV.leadingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstNotesCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             firstNotesCV.bottomAnchor.constraint(equalTo: keysCVBackground.topAnchor),
             firstNotesCV.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor, multiplier: 0.25),
-
+            
             firstOpenNoteLbl.centerYAnchor.constraint(equalTo: firstNotesCV.centerYAnchor),
             firstOpenNoteLbl.centerXAnchor.constraint(equalTo: openKey.centerXAnchor),
-
+            
             firstKeysCV.leadingAnchor.constraint(equalTo: openKey.trailingAnchor),
             firstKeysCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             firstKeysCV.topAnchor.constraint(equalTo: keysCVBackground.topAnchor),
             firstKeysCV.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor, multiplier: 0.5),
-
+            
             secondKeysCV.leadingAnchor.constraint(equalTo: firstKeysCV.leadingAnchor),
             secondKeysCV.trailingAnchor.constraint(equalTo: firstKeysCV.trailingAnchor),
             secondKeysCV.topAnchor.constraint(equalTo: firstKeysCV.bottomAnchor),
             secondKeysCV.heightAnchor.constraint(equalTo: firstKeysCV.heightAnchor),
-
+            
             secondNotesCV.leadingAnchor.constraint(equalTo: firstNotesCV.leadingAnchor),
             secondNotesCV.trailingAnchor.constraint(equalTo: firstNotesCV.trailingAnchor),
             secondNotesCV.topAnchor.constraint(equalTo: secondKeysCV.bottomAnchor),
             secondNotesCV.heightAnchor.constraint(equalTo: firstNotesCV.heightAnchor),
-
+            
             secondOpenNoteLbl.centerYAnchor.constraint(equalTo: secondNotesCV.centerYAnchor),
             secondOpenNoteLbl.centerXAnchor.constraint(equalTo: openKey.centerXAnchor),
             
-            openKey.topAnchor.constraint(equalTo: firstNotesCV.topAnchor),
             openKey.bottomAnchor.constraint(equalTo: secondOpenNoteLbl.bottomAnchor),
-
+            
             dotsCV.leadingAnchor.constraint(equalTo: secondKeysCV.leadingAnchor),
             dotsCV.trailingAnchor.constraint(equalTo: secondKeysCV.trailingAnchor),
             dotsCV.heightAnchor.constraint(equalTo: secondKeysCV.heightAnchor),
             dotsCV.centerYAnchor.constraint(equalTo: keysCVBackground.centerYAnchor),
-
+            
             firstString.leadingAnchor.constraint(equalTo: keysCVBackground.leadingAnchor),
             firstString.trailingAnchor.constraint(equalTo: keysCVBackground.trailingAnchor),
             firstString.centerYAnchor.constraint(equalTo: firstKeysCV.centerYAnchor),
             firstString.heightAnchor.constraint(equalTo: firstKeysCV.heightAnchor, multiplier: 0.06),
-
+            
             secondString.leadingAnchor.constraint(equalTo: keysCVBackground.leadingAnchor),
             secondString.trailingAnchor.constraint(equalTo: keysCVBackground.trailingAnchor),
             secondString.centerYAnchor.constraint(equalTo: secondKeysCV.centerYAnchor),
             secondString.heightAnchor.constraint(equalTo: firstString.heightAnchor),
             
-            keysHidingSwitch.topAnchor.constraint(equalTo: secondNotesCV.bottomAnchor, constant: 16),
+            
+            keysHidingSwitch.topAnchor.constraint(equalTo: secondNotesCV.bottomAnchor, constant: 8),
             keysHidingSwitch.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             keysStateLabel.topAnchor.constraint(equalTo: keysHidingSwitch.bottomAnchor, constant: 8),
             keysStateLabel.leadingAnchor.constraint(equalTo: keysHidingSwitch.leadingAnchor),
-        
-            playButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-            playButton.heightAnchor.constraint(equalTo: keysCVBackground.heightAnchor, multiplier: 0.4),
-            playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 12),
+            
+            metronomeLabel.topAnchor.constraint(equalTo: keysHidingSwitch.topAnchor),
+            metronomeLabel.heightAnchor.constraint(equalToConstant: metronomeLabel.intrinsicContentSize.height),
+            metronomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.17),
+            containerView.topAnchor.constraint(equalTo: metronomeLabel.bottomAnchor, constant: 8),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
+            
+            playButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 8),
+            playButton.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 1.5),
+            playButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             playButton.widthAnchor.constraint(equalTo: playButton.heightAnchor),
             
             minusButton.trailingAnchor.constraint(equalTo: playButton.leadingAnchor, constant: -16),
@@ -523,19 +536,11 @@ extension DombraViewController {
             plusButton.widthAnchor.constraint(equalTo: playButton.widthAnchor),
             plusButton.topAnchor.constraint(equalTo: playButton.topAnchor),
             plusButton.heightAnchor.constraint(equalTo: playButton.heightAnchor),
-
-            metronomeLabel.bottomAnchor.constraint(equalTo: playButton.topAnchor, constant: -8),
-            metronomeLabel.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
             
-            containerView.leadingAnchor.constraint(equalTo: plusButton.trailingAnchor, constant: 16),
-            containerView.widthAnchor.constraint(equalTo: plusButton.widthAnchor, multiplier: 0.7),
-            containerView.topAnchor.constraint(equalTo: metronomeLabel.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: playButton.bottomAnchor),
-            
-            iconsCV.heightAnchor.constraint(equalTo: playButton.heightAnchor, multiplier: 1.2),
-            iconsCV.bottomAnchor.constraint(equalTo: playButton.bottomAnchor),
             iconsCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            iconsCV.widthAnchor.constraint(equalTo: iconsCV.heightAnchor, multiplier: 2, constant: 20)
+            iconsCV.topAnchor.constraint(equalTo: keysHidingSwitch.topAnchor),
+            iconsCV.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8),
+            iconsCV.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.07)
         ])
     }
 }
