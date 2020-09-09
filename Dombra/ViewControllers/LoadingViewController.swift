@@ -105,3 +105,11 @@ extension LoadingViewController: UINavigationControllerDelegate {
     }
 }
 
+
+// MARK:- Home Indicator
+extension LoadingViewController {
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
+}
+

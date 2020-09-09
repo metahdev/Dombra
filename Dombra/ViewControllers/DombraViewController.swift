@@ -451,7 +451,7 @@ extension DombraViewController {
             
             openKey.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             openKey.topAnchor.constraint(equalTo: view.topAnchor),
-            openKey.widthAnchor.constraint(equalTo: keysCVBackground.heightAnchor),
+            openKey.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
             
             firstOpenKeyHighlight.leadingAnchor.constraint(equalTo: openKey.leadingAnchor),
             firstOpenKeyHighlight.trailingAnchor.constraint(equalTo: openKey.trailingAnchor),

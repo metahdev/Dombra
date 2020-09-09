@@ -38,7 +38,7 @@ class VideoViewController: UIViewController, ChildVC {
         view.clipsToBounds = false
         return view
     }()
-    private let videoID = "9-cGM-Sc0RQ"
+    private let videoID = "p8jnwChiea8"
     private let playVarsDic = ["controls": 1, "playsinline": 1, "showinfo": 1, "autoplay": 0, "rel": 0]
         
     
